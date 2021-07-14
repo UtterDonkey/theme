@@ -291,4 +291,13 @@ background: #444;
 #view {
 background-color: #444;
 }
+.grid (
+background: black;
+}
+.outer .tab-background {
+background-color: #444;
+}
+.tabs {
+background-color: #444;
+}
 }
