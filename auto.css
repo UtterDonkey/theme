@@ -276,4 +276,7 @@ overflow: hidden;
 .box-content#main-content {
     background: #444;
 }
+#content > .cols > .col-12 > .box, .box .box-head {
+    background:  hsla(215, 20%, 45%, 1);
+    }
 }
