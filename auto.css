@@ -285,4 +285,7 @@ background: black !important;
 .button.grey:not([data-control="load-more"]), button.grey, .button.grey:not([data-control="load-more"]):hover, button.grey:hover {
 background: black !important;
 }
+.tabs-index {
+background: #444;
+}
 }
