@@ -300,4 +300,10 @@ background-color: #444;
 .tabs {
 background-color: #444;
 }
+.messages-social-list {
+background: black;
+}
+#footer {
+background: black;
+}
 }
