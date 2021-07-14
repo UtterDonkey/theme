@@ -277,12 +277,12 @@ overflow: hidden;
     background: #444;
 }
 #content > .cols > .col-12 > .box, .box .box-head {
-    background:  hsla(215, 20%, 45%, 1);
-    }
-    .media-list .media-item-content {
-        background: black;
-    }
-    .button.grey:not([data-control="load-more"]), button.grey, .button.grey:not([data-control="load-more"]):hover, button.grey:hover {
-        background: black;
-    }
+background:  hsla(215, 20%, 45%, 1);
+}
+.media-list .media-item-content {
+background: black;
+}
+.button.grey:not([data-control="load-more"]), button.grey, .button.grey:not([data-control="load-more"]):hover, button.grey:hover {
+background: black;
+}
 }
