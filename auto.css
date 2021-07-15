@@ -1,4 +1,37 @@
+@media (prefers-color-scheme: light) {
+.modal_header_1dNxf {
+background-color: hsla(260, 100%, 70%, 0.9);
+}
+.tag-button_tag-button_3MxU5 {
+background: hsla(260, 100%, 70%, 1);
+}
+.tag-button_active_1IIH9 {
+background: red;
+}
+.loader_background_1-Rwn {
+background-color: hsla(260, 100%, 70%, 1);
 
+}
+.blocklyWidgetDiv .goog-menu {
+overflow: hidden; /* Hide scrollbars */
+}
+.sprite-selector_items-wrapper_4bcOj.box_box_2jjDp {
+overflow: hidden;
+}
+.sprite-selector_items-wrapper_17MEf {
+overflow: hidden; /* Hide scrollbars */
+}
+.s3devSTT {
+border-top: 1px solid hsla(0, 0%, 0%, 0.15);
+padding: 8px 12px;
+}
+.react-contextmenu-item:hover {
+background: hsla(215, 100%, 65%, 1);
+color: white;
+}
+}
+
+@media (prefers-color-scheme: dark) {
 body { background-color: black; }
 .blocklyMainBackground { fill: #444 !important; }
 /*.blocklyBlockCanvas { filter: brightness(0.9) saturate(0) !important; }*/
@@ -273,4 +306,4 @@ background: black;
 #footer {
 background: black;
 }
-
+}
