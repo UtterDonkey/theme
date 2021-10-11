@@ -33,7 +33,7 @@ function speak(text, callback){
         setCloud('synthesis over?', true);
     }
     utterThis.onerror = function (event) {
-        console.error('SpeechSynthesisUtterance.onerror');
+        setCloud('synthesis over?', true);
     }
     var selectedOption = 'Microsoft Sonia Online (Natural) - English (United Kingdom)';
     for(i = 0; i < voices.length ; i++) {
