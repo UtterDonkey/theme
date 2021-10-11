@@ -25,12 +25,12 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
 }
 
-function speak(text){
+function speak(text, callback){
 
     if (text !== '') {
     var utterThis = new SpeechSynthesisUtterance(text);
     utterThis.onend = function (event) {
-        console.log('SpeechSynthesisUtterance.onend');
+        setCloud('synthesis over?', true);
     }
     utterThis.onerror = function (event) {
         console.error('SpeechSynthesisUtterance.onerror');
@@ -45,5 +45,6 @@ function speak(text){
     utterThis.pitch = 1;
     utterThis.rate = 1;
     synth.speak(utterThis);
+    
   }
 }
