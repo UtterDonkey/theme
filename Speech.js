@@ -53,7 +53,7 @@ class SpeechRecognition {
                 },
                               {
                     "opcode": "recording",
-                    "blockType": "boolean",
+                    "blockType": "Scratch.BlockType.BOOLEAN",
                     "text": "recording?",
                 },
             ],
