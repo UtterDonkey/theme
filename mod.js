@@ -194,7 +194,8 @@ class Utilities {
           text: 'execute mathematical expression [A]',
           arguments: {
             A: {
-              type: Scratch.ArgumentType.STRING
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: '(2+3)/(4-(3*2))/-2'
             }
           }
         },
