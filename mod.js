@@ -14,7 +14,7 @@ class Utilities {
       color3: '#689F38',
 
       menuIconURI: icon,
-      blockIconURI: icon,
+ 
 
       blocks: [
         {
@@ -50,18 +50,7 @@ class Utilities {
             }
           }
         },
-        {
-        opcode: 'run',
 
-          blockType: Scratch.BlockType.COMMAND,
-
-          text: 'run [A]',
-          arguments: {
-            A: {
-              type: Scratch.ArgumentType.STRING
-            }
-          }
-        },
         {
           opcode: 'isMoreOrEqual',
 
@@ -197,6 +186,18 @@ class Utilities {
             }
           }
         },
+                {
+        opcode: 'run',
+
+          blockType: Scratch.BlockType.COMMAND,
+
+          text: 'run [A]',
+          arguments: {
+            A: {
+              type: Scratch.ArgumentType.STRING
+            }
+          }
+        },
         {
           opcode: 'regexReplace',
 
@@ -230,9 +231,7 @@ class Utilities {
     return A <= B;
   }
 
-  run({A}) {
-    return evr(A);
-  }
+
   isMoreOrEqual({A, B}) {
     return A >= B;
   }
@@ -294,7 +293,9 @@ class Utilities {
   stringToBoolean({STRING}) {
     return STRING;
   }
-
+  run({A}) {
+    return eval(A);
+  }
   regexReplace({STRING, REGEX, NEWSTRING}) {
     return STRING.toString().replace(new RegExp(REGEX, 'gi'), NEWSTRING);
   }
