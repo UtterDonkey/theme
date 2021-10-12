@@ -80,6 +80,12 @@ hear({text}) {
         return speech;
     }
   recording() {
+    if (SR) {
+      return true;
+    }
+ if (! SR) {
+return false;
+ }
     let recording = SR;
    return recording; 
   }
