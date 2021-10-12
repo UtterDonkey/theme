@@ -22,27 +22,30 @@ class MouseCursor {
           
             "blocks": [
                 {
-                    "opcode": "SwitchCur",
+                    "opcode": "record",
                     "blockType": "command",
                     "text": "listen",
-                    "arguments": {
+                  
 
+                },
+                              {
+                    "opcode": "hear",
+                    "blockType": "hat",
+                    "text": "When I hear [text]",
+                     "arguments": {
+                        "text": {
+                            "type": "string",
+                            "defaultValue": "let's go"
+                            
+                        },
                     },
+
                 },
+                
                 {
-                    "opcode": "hide",
-                    "blockType": "command",
-                    "text": "hide cursor",
-                },
-                {
-                    "opcode": "reset",
-                    "blockType": "command",
-                    "text": "reset cursor",
-                },
-                {
-                    "opcode": "GetCur",
+                    "opcode": "getVoice",
                     "blockType": "reporter",
-                    "text": "back",
+                    "text": "speech",
                 },
             ],
 
@@ -52,19 +55,16 @@ class MouseCursor {
         };
     }
 
-    SwitchCur() {
+    record() {
         speech();
     }
+hear({text}) {
+          let cur = voice;
+        return cur.includes(text);
+}
 
-    hide() {
-        document.body.style.cursor = "none";
-    }
-    
-    reset() {
-        document.body.style.cursor = "auto";
-    }
 
-    GetCur() {
+    getVoice() {
         let cur = voice;
         return cur;
     }
