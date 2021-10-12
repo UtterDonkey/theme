@@ -14,6 +14,7 @@ class Utilities {
       color3: '#689F38',
 
       menuIconURI: icon,
+      blockIconURI: icon,
 
       blocks: [
         {
