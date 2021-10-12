@@ -19,8 +19,8 @@ class SpeechRecognition {
 
     getInfo() {
         return {
-            "id": "Speech",
-            "name": "SpeechRecognition",
+            "id": "Speech To Text",
+            "name": "Speech To Text",
           
              "menuIconURI": SpeechMenu,
              "blockIconURI": SpeechIcon,
