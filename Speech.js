@@ -51,11 +51,7 @@ class SpeechRecognition {
                     "blockType": "reporter",
                     "text": "speech",
                 },
-                              {
-                    "opcode": "recording",
-                    "blockType": "boolean",
-                    "text": "recording?",
-                },
+
             ],
 
             "menus": {
@@ -79,16 +75,7 @@ hear({text}) {
         let speech = voice;
         return speech;
     }
-  recording() {
-    if (SR) {
-      return true;
-    }
- if (! SR) {
-return false;
- }
-    let recording = SR;
-   return recording; 
-  }
+
 }
 
 (function() {
