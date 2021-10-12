@@ -53,8 +53,8 @@ class SpeechRecognition {
                 },
                               {
                     "opcode": "recording",
-                    "blockType": "boolean",
-                    "text": "recording?",
+                    "blockType": "reporter",
+                    "text": "recordin?",
                 },
             ],
 
