@@ -189,9 +189,9 @@ class Utilities {
                 {
         opcode: 'run',
 
-          blockType: Scratch.BlockType.COMMAND,
+          blockType: Scratch.BlockType.REPORTER,
 
-          text: 'run [A]',
+          text: 'execute mathematical expression [A]',
           arguments: {
             A: {
               type: Scratch.ArgumentType.STRING
