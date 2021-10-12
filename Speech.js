@@ -52,6 +52,12 @@ class SpeechRecognition {
                     "blockType": "reporter",
                     "text": "speech",
                 },
+                                            {
+                    "opcode": "recording",
+                    "blockType": "Boolean",
+                    "text": "recording?",
+
+                        },
 
             ],
 
@@ -76,6 +82,10 @@ hear({text}) {
         let speech = voice;
         return speech;
     }
+  recording() {
+   let recording = SR;
+    return recording;
+  }
 
 }
 
