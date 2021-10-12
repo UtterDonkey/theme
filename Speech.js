@@ -54,7 +54,7 @@ class SpeechRecognition {
                               {
                     "opcode": "recording",
                     "blockType": "reporter",
-                    "text": "recordin?",
+                    "text": "recording",
                 },
             ],
 
@@ -80,7 +80,8 @@ hear({text}) {
         return speech;
     }
   recording() {
-   return SR; 
+    let recording = SR;
+   return recording; 
   }
 }
 
