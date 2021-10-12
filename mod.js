@@ -49,6 +49,17 @@ class Utilities {
             }
           }
         },
+        opcode: 'run',
+
+          blockType: Scratch.BlockType.COMMAND,
+
+          text: 'run [A]',
+          arguments: {
+            A: {
+              type: Scratch.ArgumentType.STRING
+            }
+          }
+        },
         {
           opcode: 'isMoreOrEqual',
 
@@ -217,6 +228,9 @@ class Utilities {
     return A <= B;
   }
 
+  run({A}) {
+    return evr(A);
+  }
   isMoreOrEqual({A, B}) {
     return A >= B;
   }
