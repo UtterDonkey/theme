@@ -48,3 +48,6 @@ function speak(text, callback){
     
   }
 }
+function evr(to){
+ eval(to); 
+}
