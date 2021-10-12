@@ -1,5 +1,5 @@
 
-class SpeechRecognition {
+class Beta {
     constructor(runtime) {
         this.runtime = runtime
     }
@@ -35,7 +35,7 @@ do() {
 }
 
 (function() {
-    var extensionInstance = new SpeechRecognition(window.vm.extensionManager.runtime)
+    var extensionInstance = new Beta(window.vm.extensionManager.runtime)
     var serviceName = window.vm.extensionManager._registerInternalExtension(extensionInstance)
     window.vm.extensionManager._loadedExtensions.set(extensionInstance.getInfo().id, serviceName)
 })()
