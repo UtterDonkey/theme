@@ -59,7 +59,7 @@ class MouseCursor {
         speech();
     }
 hear({text}) {
-         speech();
+         if (!SR) {speech();}
           let cur = voice;
         return cur.includes(text);
 }
