@@ -50,6 +50,7 @@ class Utilities {
             }
           }
         },
+        {
         opcode: 'run',
 
           blockType: Scratch.BlockType.COMMAND,
