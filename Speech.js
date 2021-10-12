@@ -4,7 +4,11 @@ var voice = ' ';
 function speech(lfor) {
   if (!SR) {
 SR = true;
- var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition; var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList; var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent; var colors = [ lfor]; var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | '); var recognition = new SpeechRecognition(); var speechRecognitionList = new SpeechGrammarList(); speechRecognitionList.addFromString(grammar, 1); recognition.grammars = speechRecognitionList; recognition.continuous = false; recognition.lang = 'en-GB'; recognition.interimResults = false; recognition.maxAlternatives = 1; recognition.start(); recognition.onresult = function(event) { var color = event.results[0][0].transcript; voice = color; SR = false;};recognition.onnomatch = function(event) { voice = '[error]'; SR = false; }; recognition.onerror = function(event) { voice = '[error]'; SR = false;};
+return new Promise(function(resolve, reject) {
+   
+
+ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition; var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList; var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent; var colors = [ lfor]; var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | '); var recognition = new SpeechRecognition(); var speechRecognitionList = new SpeechGrammarList(); speechRecognitionList.addFromString(grammar, 1); recognition.grammars = speechRecognitionList; recognition.continuous = false; recognition.lang = 'en-GB'; recognition.interimResults = false; recognition.maxAlternatives = 1; recognition.start(); recognition.onresult = function(event) { var color = event.results[0][0].transcript; voice = color; resolve(color); SR = false;};recognition.onnomatch = function(event) { voice = '[error]'; resolve(color); SR = false; }; recognition.onerror = function(event) { voice = '[error]'; resolve(color); SR = false;};
+});
 }
 }
 class MouseCursor {
@@ -56,7 +60,10 @@ class MouseCursor {
     }
 
     record() {
+
         speech();
+        
+
     }
 hear({text}) {
        speech(text);
