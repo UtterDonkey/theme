@@ -116,3 +116,46 @@ listen({string}) {
     var serviceName = window.vm.extensionManager._registerInternalExtension(extensionInstance)
     window.vm.extensionManager._loadedExtensions.set(extensionInstance.getInfo().id, serviceName)
 })()
+var synth = window.speechSynthesis;
+var voices = [];
+
+function populateVoiceList() {
+  voices = synth.getVoices().sort(function (a, b) {
+      const aname = a.name.toUpperCase(), bname = b.name.toUpperCase();
+      if ( aname < bname ) return -1;
+      else if ( aname == bname ) return 0;
+      else return +1;
+  });
+
+
+
+}
+
+populateVoiceList();
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+
+function speak(text, callback){
+
+    if (text !== '') {
+    var utterThis = new SpeechSynthesisUtterance(text);
+    utterThis.onend = function (event) {
+        setCloud('synthesis over?', true);
+    }
+    utterThis.onerror = function (event) {
+        setCloud('synthesis over?', true);
+    }
+    var selectedOption = 'Microsoft Sonia Online (Natural) - English (United Kingdom)';
+    for(i = 0; i < voices.length ; i++) {
+      if(voices[i].name === selectedOption) {
+        utterThis.voice = voices[i];
+        break;
+      }
+    }
+    utterThis.pitch = 1;
+    utterThis.rate = 1;
+    synth.speak(utterThis);
+    
+  }
+}
