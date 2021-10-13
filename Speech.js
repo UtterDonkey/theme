@@ -102,7 +102,7 @@ hear({text}) {
         return speech;
     }
   recording() {
-   let recording = SR;
+   let recording = record;
     return recording;
   }
 listen({string}) {
