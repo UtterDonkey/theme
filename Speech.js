@@ -90,13 +90,13 @@ class SpeechRecognition {
     }
 
     record() {
-recognition.stop(); recognition.start(); 
+
         record = true;
         
 
     }
 hear({text}) {
-recognition.stop(); recognition.start(); 
+
        record = true;
        word = text;
 
