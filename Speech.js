@@ -106,7 +106,8 @@ hear({text}) {
     return recording;
   }
 listen({string}) {
- return listenFor.toLowerCase().includes(string.toLowerCase()); 
+ return listenFor.toLowerCase().includes(string.toLowerCase());
+listenFor = ' '; 
 }
 
 }
