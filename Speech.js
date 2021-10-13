@@ -112,8 +112,9 @@ recognition.stop(); recognition.start();
     return recording;
   }
 listen({string}) {
+let heard = listenFor;
 listenFor = ' '; 
- return listenFor.toLowerCase().includes(string.toLowerCase());
+ return heard.toLowerCase().includes(string.toLowerCase());
 
 }
 
