@@ -283,6 +283,12 @@ value: "[class^=asset-panel_]"
 text: "sprite info",
 value: "[class^=sprite-info]"
 }, {
+text: "sprite info - input",
+value: ".sprite-info_sprite-input_17wjb"
+}, {
+text: "label info",
+value: ".label_input-label_3KjCa, .label_input-label-secondary_3QDNV"
+}, {
 text: "new buttons",
 value: "[class^=selector_new-buttons]::before"
 }, {
