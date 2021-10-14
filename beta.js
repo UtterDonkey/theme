@@ -102,6 +102,29 @@ class Beta {
 
                 },
                 {
+                    "opcode": "setCSS",
+                    "blockType": "command",
+                    "text": "set property [property] of [element] to [style]",
+                    "arguments": {
+                        "element": {
+                            "type": "string",
+                            "defaultValue": ".menu-bar_main-menu_3wjWH",
+                            "menu": "elements"
+                        },
+                        "property": {
+                            "type": "string",
+                            "defaultValue": "background-color"
+                           
+                        },
+                        "style": {
+                            "type": "string",
+                            "defaultValue": "red"
+                           
+                        },
+                    },
+
+                },
+                {
                     "opcode": "css",
                     "blockType": "command",
                     "text": "append CSS [string]",
@@ -114,12 +137,17 @@ class Beta {
 
                 },
 
+
             ],
 
             "menus": {
                                 "on/off": {
                     acceptReporters:false, 
                     items: [{text:"on",value:true}, {text:"off",value:false}],
+                },
+                                "elements": {
+                    acceptReporters:true, 
+                    items: [{text:"menu bar",value:".menu-bar_main-menu_3wjWH"} ],
                 }
             }     
         };
@@ -179,6 +207,13 @@ var styleSheet = document.createElement("style");
 styleSheet.type = "text/css";
 styleSheet.innerText = string;
 document.head.appendChild(styleSheet);
+}
+setCSS({property, element, style}) {
+var styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = element + '{' + property + ':' + style + ';}';
+document.head.appendChild(styleSheet);
+
 }
 }
 
