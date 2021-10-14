@@ -9,8 +9,8 @@ class Beta {
         return {
             "id": "Beta",
             "name": "Beta",
-            color1: '#222222',
-            color2: '#222222',
+            color1: '#888888',
+            color2: '#88888888',
           
 
           
@@ -95,7 +95,7 @@ class Beta {
                     "arguments": {
                         "turbo": {
                             "type": "string",
-                            "defaultValue": "off",
+                            "defaultValue": "false",
                             "menu": "on/off"
                         },
                     },
