@@ -72,6 +72,22 @@ class Beta {
                     },
 
                 },
+                {
+                    "opcode": "downloadBin",
+                    "blockType": "command",
+                    "text": "download binary [text] as [filename]",
+                    "arguments": {
+                        "text": {
+                            "type": "string",
+                            "defaultValue": "data:text/plain;base64,SGVsbG8gV29ybGQh"
+                        },
+                        "filename": {
+                            "type": "string",
+                            "defaultValue": "file.txt"
+                        },
+                    },
+
+                },
 
             ],
 
@@ -115,6 +131,17 @@ download({text, filename}) {
   element.click();
 
   document.body.removeChild(element);
+}
+downloadBin({text, filename}) {
+
+    const linkSource = `${text}`;
+    const downloadLink = document.createElement('a');
+    document.body.appendChild(downloadLink);
+    downloadLink.href = linkSource;
+    downloadLink.target = '_self';
+    downloadLink.download = filename;
+    downloadLink.click();
+
 }
 }
 
