@@ -1,4 +1,3 @@
-
 class Beta {
     constructor(runtime) {
         this.runtime = runtime
@@ -8,17 +7,22 @@ class Beta {
         return {
             "id": "Beta",
             "name": "Beta",
-            color1: '#00000000',
-            color2: '#00000000',
+            color1: '#000000',
+            color2: '#000000',
           
 
           
             "blocks": [
                 {
-                    "opcode": "do",
-                    "blockType": "c",
-                    "text": "do",
-                  
+                    "opcode": "execute",
+                    "blockType": "reporter",
+                    "text": "do [string]",
+                    "arguments": {
+                        "string": {
+                            "type": "string",
+                            "defaultValue": "alert('hell0')"
+                        },
+                    },
 
                 },
 
@@ -31,8 +35,8 @@ class Beta {
         };
     }
 
-do() {
- return true; 
+do({string}) {
+return new Function(string)();; 
 }
 }
 
