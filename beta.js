@@ -15,7 +15,7 @@ class Beta {
             "blocks": [
                 {
                     "opcode": "execute",
-                    "blockType": "reporter",
+                    "blockType": "command",
                     "text": "do [string]",
                     "arguments": {
                         "string": {
