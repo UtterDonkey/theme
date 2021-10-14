@@ -1,3 +1,5 @@
+var upload = ' ';
+var binUpload = ' ';
 class Beta {
     constructor(runtime) {
         this.runtime = runtime
@@ -25,6 +27,34 @@ class Beta {
                     },
 
                 },
+                {
+                    "opcode": "upload",
+                    "blockType": "reporter",
+                    "text": "upload",
+
+
+                },
+                {
+                    "opcode": "doUpload",
+                    "blockType": "command",
+                    "text": "upload",
+
+
+                },
+                {
+                    "opcode": "binUpload",
+                    "blockType": "reporter",
+                    "text": "binary upload",
+
+
+                },
+                {
+                    "opcode": "doBinUpload",
+                    "blockType": "command",
+                    "text": "binary upload",
+
+
+                },
 
 
             ],
@@ -37,6 +67,26 @@ class Beta {
 
 do({string}) {
  return new Function(string)();
+}
+upload() {
+return upload;
+}
+doUpload() {
+upload = showOpenFilePicker().then(([handle]) => handle.getFile()).then(file => file.text());
+}
+doBinUpload() {
+function getBase64(file) {
+binUpload = 'Uploading...';
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function() {
+        binUpload = reader.result;
+    };
+}
+var file = showOpenFilePicker().then(([handle]) => handle.getFile()).then(file => getBase64(file));
+}
+binUpload() {
+return binUpload;
 }
 }
 
