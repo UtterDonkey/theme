@@ -147,7 +147,7 @@ class Beta {
                 },
                                 "elements": {
                     acceptReporters:true, 
-                    items: [{text:"menu bar",value:".menu-bar_main-menu_3wjWH"} ],
+                    items: [{text:"menu bar",value:".menu-bar_main-menu_3wjWH"},{text:"menu bar - accounts",value:".menu-bar_account-info-group_MeJZP .menu-bar_menu-bar-item_oLDa-"},{text:"code background",value:".blocklySvg"},{text:"block palette",value:".blocklyFlyout"},{text:"block palette - background",value:".blocklyFlyoutBackground"},{text:"paint editor - canvas background",value:".paint-editor_controls-container_1Rqwy"},{text:"paint editor - paper canvas",value:".paper-canvas_paper-canvas_1y588"},{text:"tutorial background",value:".card_step-body_2bFkf, .card_left-card_1KpEh, .card_right-card_3IrbD"} ],
                 }
             }     
         };
