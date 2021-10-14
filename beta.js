@@ -338,7 +338,10 @@ value: "[class^=backpack_backpack-header]"
     value: ".card_step-body_2bFkf, .card_left-card_1KpEh, .card_right-card_3IrbD"
 }, {
 text: "background",
-value: "[class^=gui_body-wrapper] "
+value: "[class^=gui_body-wrapper]  "
+}, {
+text: "fullscreen background",
+value: ".stage-wrapper_stage-wrapper_2bejr.stage-wrapper_full-screen_2hjMb"
 }
  ],
                 }
