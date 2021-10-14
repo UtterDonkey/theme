@@ -169,6 +169,12 @@ class Beta {
     text: "code background",
     value: ".blocklySvg"
 }, {
+text: "tabs",
+value: "[class*=gui_tab_]"
+}, {
+text: "tabs - selected",
+value: "[class*=gui_tab_][class*=gui_is-selected]"
+}, {
     text: "block palette",
     value: ".blocklyFlyout"
 }, {
@@ -205,6 +211,9 @@ class Beta {
 text: "sprite selector item",
 value: "[class*=sprite-selector-item]"
 }, {
+text: "asset panel",
+value: "[class^=asset-panel_]"
+}, {
 text: "sprite info",
 value: "[class^=sprite-info]"
 }, {
@@ -219,6 +228,21 @@ value: "[class^=gui_extension-button-container]"
 }, {
     text: "paint editor - paper canvas",
     value: ".paper-canvas_paper-canvas_1y588"
+}, {
+text: "sound editor - button",
+value: "[class^=sound-editor_round-button]"
+}, {
+text: "button",
+value: "[class*=button_button], [class^=sound-editor_button]"
+}, {
+text: "stage",
+value: "[class^=stage_stage-wrapper-overlay]"
+}, {
+text: "stage - content",
+value: "[class*=stage_stage-overlay-content]"
+}, {
+text: "stage - header",
+value: "[class^=stage-header_stage-header-wrapper-overlay]"
 }, {
     text: "tutorial background",
     value: ".card_step-body_2bFkf, .card_left-card_1KpEh, .card_right-card_3IrbD"
