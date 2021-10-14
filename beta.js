@@ -14,7 +14,7 @@ class Beta {
           
             "blocks": [
                 {
-                    "opcode": "execute",
+                    "opcode": "do",
                     "blockType": "command",
                     "text": "do [string]",
                     "arguments": {
@@ -36,7 +36,7 @@ class Beta {
     }
 
 do({string}) {
-return new Function(string)();; 
+ return new Function(string)();
 }
 }
 
