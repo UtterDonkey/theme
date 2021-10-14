@@ -10,7 +10,7 @@ class Beta {
             "id": "Beta",
             "name": "Beta",
             color1: '#888888',
-            color2: '#88888888',
+            color2: '#888888',
           
 
           
