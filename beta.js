@@ -139,12 +139,69 @@ class Beta {
 
                 {
                     "opcode": "hex",
+                    "func": "resend",
                     "blockType": "reporter",
-                    "text": "[color]",
+                    "text": "color [send]",
                     "arguments": {
-                        "color": {
+                        "send": {
                             "type": "color",
                             "defaultValue": "#000000"
+                        },
+
+                    },
+
+                },
+                {
+                    "opcode": "angle",
+                   "func": "resend",
+                    "blockType": "reporter",
+                    "text": "angle [send]",
+                    "arguments": {
+                        "send": {
+                            "type": "angle",
+                            "defaultValue": "90"
+                        },
+
+                    },
+
+                },
+                {
+                    "opcode": "matrix",
+                   "func": "resend",
+                    "blockType": "reporter",
+                    "text": "matrix [send]",
+                    "arguments": {
+                        "send": {
+                            "type": "matrix",
+                            "defaultValue": "0101010101100010101000100"
+                        },
+
+                    },
+
+                },
+                {
+                    "opcode": "note",
+                   "func": "resend",
+                    "blockType": "reporter",
+                    "text": "note [send]",
+                    "arguments": {
+                        "send": {
+                            "type": "note",
+                            "defaultValue": "60"
+                        },
+
+                    },
+
+                },
+                {
+                    "opcode": "image",
+                   "func": "resend",
+                    "blockType": "reporter",
+                    "text": "image [send]",
+                    "arguments": {
+                        "send": {
+                            "type": "image",
+                            "defaultValue": "60"
                         },
 
                     },
@@ -166,8 +223,17 @@ class Beta {
     text: "menu bar - accounts",
     value: ".menu-bar_account-info-group_MeJZP .menu-bar_menu-bar-item_oLDa-"
 }, {
+text: "menu bar - help",
+value: "[class^=menu-bar_help-icon]"
+}, {
     text: "code background",
     value: ".blocklySvg"
+}, {
+text: "popover body",
+value: ".Popover-body"
+}, {
+text: "popover tip shape",
+value: ".Popover-tipShape"
 }, {
 text: "tabs",
 value: "[class*=gui_tab_]"
@@ -229,6 +295,18 @@ value: "[class^=gui_extension-button-container]"
     text: "paint editor - paper canvas",
     value: ".paper-canvas_paper-canvas_1y588"
 }, {
+text: "color picker - header",
+value: "[class^=color-picker_row-header] "
+}, {
+text: "color picker - divider",
+value: "[class^=color-picker_divider]"
+}, {
+text: "color picker - swatch",
+value: "[class^=color-picker_swatch]",
+}, {
+text: "color picker - slider handle",
+value: "[class^=slider_handle]"
+}, {
 text: "sound editor - button",
 value: "[class^=sound-editor_round-button]"
 }, {
@@ -243,6 +321,12 @@ value: "[class*=stage_stage-overlay-content]"
 }, {
 text: "stage - header",
 value: "[class^=stage-header_stage-header-wrapper-overlay]"
+}, {
+text: "react tabs",
+value: "[class^=react-tabs]:focus::after"
+}, {
+text: "backpack header",
+value: "[class^=backpack_backpack-header]"
 }, {
     text: "tutorial background",
     value: ".card_step-body_2bFkf, .card_left-card_1KpEh, .card_right-card_3IrbD"
@@ -318,8 +402,8 @@ styleSheet.innerText = element + '{' + property + ':' + style + ';}';
 document.head.appendChild(styleSheet);
 
 }
-hex({color}) {
-return color;
+resend({send}) {
+return send;
 }
 }
 
