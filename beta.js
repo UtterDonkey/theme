@@ -88,11 +88,39 @@ class Beta {
                     },
 
                 },
+                {
+                    "opcode": "turbo",
+                    "blockType": "command",
+                    "text": "set turbo mode to [turbo]",
+                    "arguments": {
+                        "turbo": {
+                            "type": "string",
+                            "defaultValue": "off",
+                            "menu": "on/off"
+                        },
+                    },
+
+                },
+                {
+                    "opcode": "css",
+                    "blockType": "command",
+                    "text": "append CSS [string]",
+                    "arguments": {
+                        "string": {
+                            "type": "string",
+                            "defaultValue": ".menu-bar_main-menu_3wjWH {background-color: red;}"
+                        },
+                    },
+
+                },
 
             ],
 
             "menus": {
-                
+                                "on/off": {
+                    acceptReporters:false, 
+                    items: [{text:"on",value:true}, {text:"off",value:false}],
+                }
             }     
         };
     }
@@ -142,6 +170,15 @@ downloadBin({text, filename}) {
     downloadLink.download = filename;
     downloadLink.click();
 
+}
+turbo({turbo}) {
+vm.setTurboMode(turbo);
+}
+css({string}) {
+var styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = string;
+document.head.appendChild(styleSheet);
 }
 }
 
