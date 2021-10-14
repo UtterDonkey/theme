@@ -9,8 +9,8 @@ class Beta {
         return {
             "id": "Beta",
             "name": "Beta",
-            color1: '#000000',
-            color2: '#000000',
+            color1: '#222222',
+            color2: '#222222',
           
 
           
@@ -137,7 +137,19 @@ class Beta {
 
                 },
 
+                {
+                    "opcode": "hex",
+                    "blockType": "reporter",
+                    "text": "[color]",
+                    "arguments": {
+                        "color": {
+                            "type": "color",
+                            "defaultValue": "#000000"
+                        },
 
+                    },
+
+                },
             ],
 
             "menus": {
@@ -147,7 +159,74 @@ class Beta {
                 },
                                 "elements": {
                     acceptReporters:true, 
-                    items: [{text:"menu bar",value:".menu-bar_main-menu_3wjWH"},{text:"menu bar - accounts",value:".menu-bar_account-info-group_MeJZP .menu-bar_menu-bar-item_oLDa-"},{text:"code background",value:".blocklySvg"},{text:"block palette",value:".blocklyFlyout"},{text:"block palette - background",value:".blocklyFlyoutBackground"},{text:"block palette - catagory selector",value:".scratchCategoryMenu, .blocklyToolboxDiv, [class^=selector_wrapper]"},{text:"code scrollbar",value:".blocklyScrollbarHandle"},{text:"zoom control",value:".blocklyZoom image"},{text:"context menu",value:".blocklyWidgetDiv .goog-menu"},{text:"context menu - item",value:".blocklyWidgetDiv .goog-menuitem"},{text:"context menu - item - highlighted",value:".blocklyWidgetDiv .goog-menuitem-highlight"},{text:"context menu - item - disabled",value:".blocklyWidgetDiv .goog-menuitem-disabled .goog-menuitem-content"},{text:"paint editor - canvas background",value:".paint-editor_controls-container_1Rqwy"},{text:"paint editor - paper canvas",value:".paper-canvas_paper-canvas_1y588"},{text:"tutorial background",value:".card_step-body_2bFkf, .card_left-card_1KpEh, .card_right-card_3IrbD"} ],
+                    items: [{
+    text: "menu bar",
+    value: ".menu-bar_main-menu_3wjWH"
+}, {
+    text: "menu bar - accounts",
+    value: ".menu-bar_account-info-group_MeJZP .menu-bar_menu-bar-item_oLDa-"
+}, {
+    text: "code background",
+    value: ".blocklySvg"
+}, {
+    text: "block palette",
+    value: ".blocklyFlyout"
+}, {
+    text: "block palette - background",
+    value: ".blocklyFlyoutBackground"
+}, {
+    text: "block palette - catagory selector",
+    value: ".scratchCategoryMenu, .blocklyToolboxDiv, [class^=selector_wrapper]"
+}, {
+    text: "block palette - catagory selector - selected",
+    value: ".scratchCategoryMenuItem.categorySelected"
+}, {
+    text: "code scrollbar",
+    value: ".blocklyScrollbarHandle"
+}, {
+    text: "zoom control",
+    value: ".blocklyZoom image"
+}, {
+    text: "context menu",
+    value: ".blocklyWidgetDiv .goog-menu"
+}, {
+    text: "context menu - item",
+    value: ".blocklyWidgetDiv .goog-menuitem"
+}, {
+    text: "context menu - item - highlighted",
+    value: ".blocklyWidgetDiv .goog-menuitem-highlight"
+}, {
+    text: "context menu - item - disabled",
+    value: ".blocklyWidgetDiv .goog-menuitem-disabled .goog-menuitem-content"
+}, {
+    text: "sprite/stage selector",
+    value: "[class^=sprite-selector_], [class^=stage-selector_]"
+}, {
+text: "sprite selector item",
+value: "[class*=sprite-selector-item]"
+}, {
+text: "sprite info",
+value: "[class^=sprite-info]"
+}, {
+text: "new buttons",
+value: "[class^=selector_new-buttons]::before"
+}, {
+text: "extension button",
+value: "[class^=gui_extension-button-container]"
+}, {
+    text: "paint editor - canvas background",
+    value: ".paint-editor_controls-container_1Rqwy"
+}, {
+    text: "paint editor - paper canvas",
+    value: ".paper-canvas_paper-canvas_1y588"
+}, {
+    text: "tutorial background",
+    value: ".card_step-body_2bFkf, .card_left-card_1KpEh, .card_right-card_3IrbD"
+}, {
+text: "background",
+value: "[class^=gui_body-wrapper] "
+}
+ ],
                 }
             }     
         };
@@ -214,6 +293,9 @@ styleSheet.type = "text/css";
 styleSheet.innerText = element + '{' + property + ':' + style + ';}';
 document.head.appendChild(styleSheet);
 
+}
+hex({color}) {
+return color;
 }
 }
 
