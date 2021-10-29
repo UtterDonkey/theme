@@ -8,6 +8,7 @@ var SR = false;
 var voice = ' ';
 var recognition = ' ';
 var LH = ' ';
+var dictate = ' ';
 
 function speech(lfor) {
   if (!SR) {
@@ -15,7 +16,7 @@ SR = true;
 return new Promise(function(resolve, reject) {
    if ( record) {ready = true;}
 var using = record;
- var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition; var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList; var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent; var colors = [ lfor]; var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | '); recognition = new SpeechRecognition(); var speechRecognitionList = new SpeechGrammarList(); speechRecognitionList.addFromString(grammar, 1); recognition.grammars = speechRecognitionList; recognition.continuous = false; recognition.lang = 'en-GB'; recognition.interimResults = false; recognition.maxAlternatives = 1; recognition.start(); recognition.onresult = function(event) { var color = event.results[0][0].transcript; if ( using ) {voice = color; record = false; ready = false;} listenFor = color; resolve(color);  SR = false; speech(word);  word = ' ';};recognition.onnomatch = function(event) {  resolve('[error]'); SR = false; if ( using ) {voice = '[Not Recognised]'; record = false; ready = false;}  speech(word); word = ' ';}; recognition.onerror = function(event) {  resolve('[error]'); if ( using ) {voice = '[error]' + event.error; record = false; ready = false} SR = false; ; speech(word); word = ' ';};
+ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition; var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList; var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent; var colors = [ lfor]; var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | '); recognition = new SpeechRecognition(); var speechRecognitionList = new SpeechGrammarList(); speechRecognitionList.addFromString(grammar, 1); recognition.grammars = speechRecognitionList; recognition.continuous = false; recognition.lang = 'en-GB'; recognition.interimResults = false; recognition.maxAlternatives = 1; recognition.start(); recognition.onresult = function(event) { var color = event.results[0][0].transcript; if ( using ) {voice = color; record = false; ready = false;} listenFor = color; dictate = dicate + color; resolve(color);  SR = false; speech(word);  word = ' ';};recognition.onnomatch = function(event) {  resolve('[error]'); SR = false; if ( using ) {voice = '[Not Recognised]'; record = false; ready = false;}  speech(word); word = ' ';}; recognition.onerror = function(event) {  resolve('[error]'); if ( using ) {voice = '[error]' + event.error; record = false; ready = false} SR = false; ; speech(word); word = ' ';};
 });
 }
 }
@@ -86,7 +87,11 @@ class SpeechRecognition {
                     "blockType": "reporter",
                     "text": "last words heard",
                 },
-
+                {
+                    "opcode": "dictation",
+                    "blockType": "reporter",
+                    "text": "dictation",
+                },
             ],
 
             "menus": {
@@ -131,7 +136,9 @@ LH = listenFor;
 let heard = LH;
 return heard;
 }
-
+dictation() {
+return dictate;
+}
 }
 
 (function() {
