@@ -7,6 +7,7 @@ var listenFor = ' ';
 var SR = false;
 var voice = ' ';
 var recognition = ' ';
+var LH = ' ';
 
 function speech(lfor) {
   if (!SR) {
@@ -118,12 +119,16 @@ hear({text}) {
   }
 listen({string}) {
 let heard = listenFor;
+LH = listenFor;
 listenFor = ' '; 
  return heard.toLowerCase().includes(string.toLowerCase());
 
 }
 heard() {
-let heard = listenFor;
+if (!listenFor = ' ';) {
+LH = listenFor;
+}
+let heard = LH;
 return heard;
 }
 
