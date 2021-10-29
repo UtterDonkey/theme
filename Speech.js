@@ -80,6 +80,11 @@ class SpeechRecognition {
                     },
 
                         },
+                {
+                    "opcode": "heard",
+                    "blockType": "reporter",
+                    "text": "last words heard",
+                },
 
             ],
 
@@ -116,6 +121,10 @@ let heard = listenFor;
 listenFor = ' '; 
  return heard.toLowerCase().includes(string.toLowerCase());
 
+}
+heard() {
+let heard = listenFor;
+return heard;
 }
 
 }
