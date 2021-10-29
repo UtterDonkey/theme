@@ -130,7 +130,7 @@ listenFor = ' ';
 
 }
 heard() {
-if (!listenFor == ' ';) {
+if (!listenFor == ' ') {
 LH = listenFor;
 }
 let heard = LH;
