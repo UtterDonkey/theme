@@ -207,6 +207,19 @@ class Beta {
                     },
 
                 },
+                                {
+                    "opcode": "time",
+                    "blockType": "command",
+                    "text": "time [secs] seconds",
+                    "arguments": {
+                        "secs": {
+                            "type": "string",
+                            "defaultValue": "1"
+                        },
+
+                    },
+
+                },
             ],
 
             "menus": {
@@ -413,6 +426,13 @@ document.head.appendChild(styleSheet);
 }
 resend({send}) {
 return send;
+}
+time({secs}) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve();
+            }, 1000 * secs);
+        });
 }
 }
 
