@@ -20,10 +20,12 @@ var using = record;
  var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition; var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList; var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent; var colors = [ lfor]; var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | '); recognition = new SpeechRecognition(); var speechRecognitionList = new SpeechGrammarList(); speechRecognitionList.addFromString(grammar, 1); recognition.grammars = speechRecognitionList; recognition.continuous = false; recognition.lang = 'en-GB'; recognition.interimResults = false; recognition.maxAlternatives = 1; recognition.start(); recognition.onresult = function(event) { var color = event.results[0][0].transcript; if ( using ) {voice = color; record = false; ready = false;} listenFor = color; if (dictating) {dictate = dictate + color;} resolve(color);  SR = false; speech(word);  word = ' ';};recognition.onnomatch = function(event) {  resolve('[error]'); SR = false; if ( using ) {voice = '[Not Recognised]'; record = false; ready = false;}  speech(word); word = ' '; resolve(voice)}; recognition.onerror = function(event) {  resolve('[error]'); if ( using ) {voice = '[error]' + event.error; record = false; ready = false} SR = false; ; speech(word); word = ' '; resolve(voice);};
 });
 } else {
+  return new Promise(function(resolve, reject) {
   if(!listenFor == ' ') {
 LH = listenFor;
   }
 resolve(LH);
+    });
 }
 }
 
@@ -101,6 +103,13 @@ class SpeechRecognition {
                   
 
                 },
+                              {
+                    "opcode": "stopDictate",
+                    "blockType": "command",
+                    "text": "stop dictate",
+                  
+
+                },
             ],
 
             "menus": {
@@ -110,17 +119,54 @@ class SpeechRecognition {
     }
 
     record() {
+return new Promise(resolve => {
+function checkFlag() {
+    if(ready) {
+       window.setTimeout(checkFlag, 100); /* this checks the flag every 100 milliseconds*/
+    } else {
+      resolve();
+    }
+}
+function checkBegin() {
+    if(!ready) {
+       window.setTimeout(checkBegin, 100); /* this checks the flag every 100 milliseconds*/
+    } else {
+      checkFlag()
+    }
+}
+checkBegin();
+record = true;
+recognition.stop()
+ 
+        });
 
-        record = true;
-recognition.stop(); 
+
         
 
     }
 hear({text}) {
 
-       record = true;
-       word = text;
-recognition.stop(); 
+return new Promise(resolve => {
+function checkFlag() {
+    if(ready) {
+       window.setTimeout(checkFlag, 100); /* this checks the flag every 100 milliseconds*/
+    } else {
+      resolve();
+    }
+}
+function checkBegin() {
+    if(!ready) {
+       window.setTimeout(checkBegin, 100); /* this checks the flag every 100 milliseconds*/
+    } else {
+      checkFlag()
+    }
+}
+checkBegin();
+record = true;
+  word = text;
+recognition.stop()
+ 
+        });
 
 }
 
@@ -148,6 +194,9 @@ startDictate() {
 dictate = ' ';
 dictating = true;
 }
+  stopDictate() {
+dictating = false;
+  }
 }
 
 (function() {
