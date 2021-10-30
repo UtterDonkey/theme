@@ -107,6 +107,7 @@ class SpeechRecognition {
     record() {
 
         record = true;
+recognition.stop(); 
         
 
     }
@@ -114,6 +115,7 @@ hear({text}) {
 
        record = true;
        word = text;
+recognition.stop(); 
 
 }
 
