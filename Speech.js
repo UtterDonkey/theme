@@ -10,6 +10,7 @@ var recognition = ' ';
 var LH = ' ';
 var dictate = ' ';
 var dictating = false;
+var hatHeard = ' ';
 
 function speech(lfor) {
   if (!SR) {
@@ -90,6 +91,13 @@ class SpeechRecognition {
                     },
 
                         },
+                                            {
+                    "opcode": "heardHat",
+                    "blockType": "reporter",
+                    "text": "heard",
+                  
+
+                },
 
                 {
                     "opcode": "dictation",
@@ -182,7 +190,8 @@ recognition.stop(); SR = false; speech(word);
 listen({string}) {
 let heard = listenFor;
 LH = listenFor;
-listenFor = ' '; 
+listenFor = ' ';  
+  if (heard.toLowerCase().includes(string.toLowerCase())) {hatHeard = heard;};
  return heard.toLowerCase().includes(string.toLowerCase());
 
 }
@@ -196,6 +205,9 @@ dictating = true;
 }
   stopDictate() {
 dictating = false;
+  }
+  hatHeard() {
+   return hatHeard; 
   }
 }
 
