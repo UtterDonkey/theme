@@ -136,7 +136,7 @@ function checkBegin() {
 }
 checkBegin();
 record = true;
-recognition.stop()
+recognition.stop(); SR = false; speech(word);
  
         });
 
@@ -164,7 +164,7 @@ function checkBegin() {
 checkBegin();
 record = true;
   word = text;
-recognition.stop()
+recognition.stop(); SR = false; speech(word);
  
         });
 
