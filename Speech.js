@@ -128,6 +128,7 @@ class SpeechRecognition {
 
     record() {
 return new Promise(resolve => {
+setTimeout(() => {
 function checkFlag() {
     if(ready) {
        window.setTimeout(checkFlag, 100); /* this checks the flag every 100 milliseconds*/
@@ -145,7 +146,7 @@ function checkBegin() {
 checkBegin();
 record = true;
 recognition.stop(); SR = false; speech(word);
- 
+});
         });
 
 
@@ -155,6 +156,7 @@ recognition.stop(); SR = false; speech(word);
 hear({text}) {
 
 return new Promise(resolve => {
+  setTimeout(() => {
 function checkFlag() {
     if(ready) {
        window.setTimeout(checkFlag, 100); /* this checks the flag every 100 milliseconds*/
@@ -173,7 +175,7 @@ checkBegin();
 record = true;
   word = text;
 recognition.stop(); SR = false; speech(word);
- 
+  });
         });
 
 }
@@ -206,7 +208,7 @@ dictating = true;
   stopDictate() {
 dictating = false;
   }
-  hatHeard() {
+  heardHat() {
    return hatHeard; 
   }
 }
