@@ -1,10 +1,3 @@
-// Core, Team, and Official extensions can `require` VM code:
-const ArgumentType = require('../../extension-support/argument-type');
-const BlockType = require('../../extension-support/block-type');
-const TargetType = require('../../extension-support/target-type');
-
-// ...or VM dependencies:
-const formatMessage = require('format-message');
 
 // Core, Team, and Official extension classes should be registered statically with the Extension Manager.
 // See: scratch-vm/src/extension-support/extension-manager.js
