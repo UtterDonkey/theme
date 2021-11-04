@@ -27,6 +27,22 @@ class Beta {
                     },
 
                 },
+                                {
+                    "opcode": "setv",
+                    "blockType": "command",
+                    "text": "set global variable [vars] to [string]",
+                    "arguments": {
+                        "string": {
+                            "type": "string",
+                            "defaultValue": "hello world!"
+                        },
+                    },
+                        "vars": {
+                            "type": "string",
+                            "defaultValue": "abc"
+                        },
+
+                },
                 {
                     "opcode": "upload",
                     "blockType": "reporter",
@@ -434,6 +450,9 @@ time({secs}) {
             }, 1000 * secs);
         });
 }
+setv({vars},{string}) {
+var vars = string;
+}
 }
 
 (function() {
@@ -441,3 +460,4 @@ time({secs}) {
     var serviceName = window.vm.extensionManager._registerInternalExtension(extensionInstance)
     window.vm.extensionManager._loadedExtensions.set(extensionInstance.getInfo().id, serviceName)
 })()
+
