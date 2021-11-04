@@ -363,7 +363,7 @@ value: ".stage-wrapper_stage-wrapper_2bejr.stage-wrapper_full-screen_2hjMb"
     }
 
 do({string}) {
- return new Function(string)();
+ return eval(string);
 }
 upload() {
 return upload;
