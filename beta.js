@@ -236,6 +236,13 @@ class Beta {
                     },
 
                 },
+                {
+                    "opcode": "frame",
+                    "blockType": "command",
+                    "text": "yeild",
+
+
+                },
             ],
 
             "menus": {
@@ -453,7 +460,23 @@ time({secs}) {
 setv({vars},{string}) {
 var vars = string;
 }
+frame() {
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+var frameLength
+if (urlParams.has('fps')) {
+frameLength = urlParams.get('fps')
+} else {
+frameLength = 30
 }
+           return new Promise(resolve => {
+            setTimeout(() => {
+                resolve();
+            }, 1000 / frameLength);
+        });
+} 
+}
+
 
 (function() {
     var extensionInstance = new Beta(window.vm.extensionManager.runtime)
