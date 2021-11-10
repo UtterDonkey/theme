@@ -52,19 +52,19 @@ class MouseCursor {
     }
 
     SwitchCur({cur}) {
-        document.body.style.cursor = cur;
+        document.getElementsByClassName('stage_stage_1fD7k box_box_2jjDp')[0].style.cursor = cur;
     }
 
     hide() {
-        document.body.style.cursor = "none";
+        document.getElementsByClassName('stage_stage_1fD7k box_box_2jjDp')[0].style.cursor = "none";
     }
     
     reset() {
-        document.body.style.cursor = "auto";
+        document.getElementsByClassName('stage_stage_1fD7k box_box_2jjDp')[0].style.cursor = "auto";
     }
 
     GetCur() {
-        let cur = document.body.style.cursor;
+        let cur = document.getElementsByClassName('stage_stage_1fD7k box_box_2jjDp')[0].style.cursor;
         return cur;
     }
 }
