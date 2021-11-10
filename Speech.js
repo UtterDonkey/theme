@@ -151,8 +151,8 @@ function checkBegin() {
     }
 }
 checkBegin();
-record = true;
-recognition.stop(); SR = false; speech(word);
+
+record = true; recognition.stop();
 });
         });
 
@@ -179,9 +179,9 @@ function checkBegin() {
     }
 }
 checkBegin();
-record = true;
+
   word = text;
-recognition.stop(); SR = false; speech(word);
+record = true; recognition.stop();
   });
         });
 
