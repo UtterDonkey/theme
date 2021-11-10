@@ -125,6 +125,13 @@ class SpeechRecognition {
                   
 
                 },
+                                            {
+                    "opcode": "fix",
+                    "blockType": "command",
+                    "text": "fix issues",
+                  
+
+                },
             ],
 
             "menus": {
@@ -218,6 +225,12 @@ dictating = false;
   heardHat() {
    return hatHeard; 
   }
+fix() {
+if(SR) {
+  return 'service running!';
+} else {
+speech();
+}}
 }
 
 (function() {
