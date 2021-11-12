@@ -226,11 +226,18 @@ dictating = false;
    return hatHeard; 
   }
 fix() {
-if(SR) {
-  return 'service running!';
-} else {
+var record = false;
+var ready = false;
+var word = ' ';
+var listenFor = ' ';
+var SR = false;
+var voice = ' ';
+var recognition = ' ';
+var LH = ' ';
+var dictate = ' ';
+var dictating = false;
+var hatHeard = ' ';
 speech();
-}}
 }
 
 (function() {
