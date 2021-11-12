@@ -237,6 +237,10 @@ var LH = ' ';
 var dictate = ' ';
 var dictating = false;
 var hatHeard = ' ';
+try{
+recognition.stop();
+recognition.abort();
+}catch(e){}
 speech();
 }
 
