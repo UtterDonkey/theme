@@ -1,5 +1,22 @@
 var upload = ' ';
 var binUpload = ' ';
+function create(frame, id, top, left, width, height, source){
+const wrapper = document.querySelector('div[class*="stage_stage-wrapper_eRRuk"]');
+const iframe = document.createElement(frame);
+iframe.id = id;
+iframe.src = source;
+Object.assign(iframe.style, {
+  position: 'absolute',
+  top: top,
+  left: left,
+  width: width,
+  height: height
+});
+wrapper.append(iframe);
+}
+function setFrame(id, property, value) {
+eval(`document.getElementById("` + id + `").` + property + ` = ` + value);
+}
 class Beta {
     constructor(runtime) {
         this.runtime = runtime
@@ -243,6 +260,64 @@ class Beta {
 
 
                 },
+                {
+                    "opcode": "createFrame",
+                    "blockType": "command",
+                    "text": "create stage frame type: [frame] id: [id] left: [Dleft] right: [Dright] height: [Dheight] width: [Dwidth] source: [source]",
+                    "arguments": {
+                        "frame": {
+                            "type": "string",
+                            "defaultValue": "video"
+                        },
+                        "id": {
+                            "type": "string",
+                            "defaultValue": "myVideo"
+                        },
+                        "Dleft": {
+                            "type": "string",
+                            "defaultValue": "0px"
+                        },
+                        "Dright": {
+                            "type": "string",
+                            "defaultValue": "0px"
+                        },
+                        "Dheight": {
+                            "type": "string",
+                            "defaultValue": "0"
+                        },
+                        "Dwidth": {
+                            "type": "string",
+                            "defaultValue": "0"
+                        },
+                        "source": {
+                            "type": "string",
+                            "defaultValue": "https://pixelbulb.online/ootypsem/SwitzerlandAdvert_1621243924335.mp4"
+                        },
+                    },
+
+                },
+                                {
+                    "opcode": "setProperty",
+                    "blockType": "command",
+                    "text": "set property: [property] of frame with id: [id] to value: [value]",
+                    "arguments": {
+                        "id": {
+                            "type": "string",
+                            "defaultValue": "myVideo"
+                        },
+                        "property": {
+                            "type": "string",
+                            "defaultValue": "controls"
+                        },
+                        "value": {
+                            "type": "string",
+                            "defaultValue": "true"
+                        },
+                        
+
+                    },
+
+                },
             ],
 
             "menus": {
@@ -475,6 +550,13 @@ frameLength = 30
             }, 1000 / frameLength);
         });
 } 
+createFrame({frame}, {id}, {Dtop}, {left}, {height}, {width}, {source}) {
+
+create(frame, id, top, left, width, height, source);
+}
+setProperty({id}, {property}, {value}){
+setFrame(id, property, value);
+}
 }
 
 
