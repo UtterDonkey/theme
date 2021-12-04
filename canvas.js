@@ -5,7 +5,7 @@ var contrast = 1
 var greyscale = 0
 var hue = 0
 var invert = 0
-var saturate = 0
+var saturate = 1
 var sepia = 0
 
 
@@ -33,16 +33,16 @@ class CanvasTheme {
                 {
                     "opcode": "canvasStyle",
                     "blockType": "command",
-                    "text": "Set Stage Effect [effect] to [value]",
+                    "text": "set stage effect [effect] to [value]",
                     "arguments": {
                         "effect": {
                             "type": "string",
                             "defaultValue": "blur",
-                            "menu": "effects"
+                            "menu": "effects",
                         },
-                         "value": {
+                        "value": {
                             "type": "string",
-                            "defaultValue": "1"
+                            "defaultValue": "1",
                         },
                     },
                 },
@@ -55,40 +55,36 @@ class CanvasTheme {
                             "type": "string",
                             "defaultValue": "blur",
                           "menu": "effects"
-                        }
+                        },
+                },
                 },
 
             ],
 
             "menus": {
-                "effect
+                "effects": {
                     acceptReporters: true, 
-                    items: [{text:"blur:"default"}, {text:"pointer",value:"pointer"}, {text:"crosshair",value:"crosshair"}, {text:"move",value:"move"}, {text:"text",value:"text"}, {text:"wait",value:"wait"}, {text:"progress",value:"progress"}, {text:"help",value:"help"}],
+                    items: [{text:"blur",value:"blur"}, {text:"brightness",value:"brightness"}, {text:"contrast",value:"contrast"}, {text:"greyscale",value:"greyscale"}, {text:"hue",value:"hue"}, {text:"invert",value:"invert"}, {text:"saturate",value:"saturate"}, {text:"sepia",value:"sepia"}],
                 }
             }     
         };
     }
 
-    SwitchCur({cur}) {
-        document.getElementsByClassName('stage_stage_1fD7k box_box_2jjDp')[0].style.cursor = cur;
+    canvasStyle({effect, value}) {
+
+        setCanvas(effect, value)
+        
     }
 
-    hide() {
-        document.getElementsByClassName('stage_stage_1fD7k box_box_2jjDp')[0].style.cursor = "none";
+    effect({effect}) {
+        return eval(effect)
     }
     
-    reset() {
-        document.getElementsByClassName('stage_stage_1fD7k box_box_2jjDp')[0].style.cursor = "auto";
-    }
 
-    GetCur() {
-        let cur = document.getElementsByClassName('stage_stage_1fD7k box_box_2jjDp')[0].style.cursor;
-        return cur;
-    }
 }
 
 (function() {
-    var extensionInstance = new MouseCursor(window.vm.extensionManager.runtime)
+    var extensionInstance = new CanvasTheme(window.vm.extensionManager.runtime)
     var serviceName = window.vm.extensionManager._registerInternalExtension(extensionInstance)
     window.vm.extensionManager._loadedExtensions.set(extensionInstance.getInfo().id, serviceName)
 })()
