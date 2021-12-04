@@ -243,7 +243,7 @@ recognition.abort();
 }catch(e){}
 speech();
 }
-
+}
 (function() {
     var extensionInstance = new SpeechRecognition(window.vm.extensionManager.runtime)
     var serviceName = window.vm.extensionManager._registerInternalExtension(extensionInstance)
