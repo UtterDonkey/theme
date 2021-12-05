@@ -58,6 +58,14 @@ class CanvasTheme {
                         },
                 },
                 },
+                {
+                    "opcode": "clear",
+                    "blockType": "command",
+                    "text": "clear stage effects",
+                   
+
+                },
+
 
             ],
 
@@ -79,7 +87,17 @@ class CanvasTheme {
     effect({effect}) {
         return eval(effect)
     }
-    
+    clear(){
+blur = 0
+brightness = 1
+contrast = 1
+greyscale = 0
+hue = 0
+invert = 0
+saturate = 1
+sepia = 0
+updateCanvas()
+    }
 
 }
 
