@@ -227,19 +227,21 @@ dictating = false;
    return hatHeard; 
   }
 fix() {
-var record = false;
-var ready = false;
-var word = ' ';
-var listenFor = ' ';
-var SR = false;
-var voice = ' ';
-var recognition = ' ';
-var LH = ' ';
-var dictate = ' ';
-var dictating = false;
-var hatHeard = ' ';
+record = false;
+ready = false;
+word = ' ';
+listenFor = ' ';
+SR = false;
+voice = ' ';
+recognition = ' ';
+LH = ' ';
+dictate = ' ';
+dictating = false;
+hatHeard = ' ';
 try{
 recognition.stop();
+  }catch(e){}
+try{
 recognition.abort();
 }catch(e){}
 speech();
