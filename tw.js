@@ -1,4 +1,3 @@
-
 window.keyPressed = '';
 window.onkeydown = e => window.keyPressed = e.key;
 class tw {
@@ -10,8 +9,9 @@ class tw {
         return {
             "id": "tw",
             "name": "tw",
-            "color1": "#202124",
-          
+            "color1": "#FF4C4C",
+            "color2": "#FF4C4C",
+            "color3": "#FF4C4C",
             "blocks": [
                 {
                     "opcode": "key",
