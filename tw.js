@@ -6,11 +6,11 @@ class tw {
         this.runtime = runtime
     }
 
-    tw() {
+    getInfo() {
         return {
             "id": "tw",
             "name": "tw",
-          
+            "color1": "#202124",
           
             "blocks": [
                 {
