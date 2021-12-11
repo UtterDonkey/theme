@@ -1,5 +1,5 @@
 
-
+window.keyPressed = '';
 window.onkeydown = e => window.keyPressed = e.key;
 class tw {
     constructor(runtime) {
