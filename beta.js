@@ -263,7 +263,7 @@ class Beta {
                 {
                     "opcode": "createFrame",
                     "blockType": "command",
-                    "text": "create stage frame type: [frame] id: [id] left: [Dleft] right: [Dright] height: [Dheight] width: [Dwidth] source: [source]",
+                    "text": "create stage frame type: [frame] id: [id] top: [Dtop] left: [Dleft] height: [Dheight] width: [Dwidth] source: [source]",
                     "arguments": {
                         "frame": {
                             "type": "string",
@@ -277,7 +277,7 @@ class Beta {
                             "type": "string",
                             "defaultValue": "0px"
                         },
-                        "Dright": {
+                        "Dtop": {
                             "type": "string",
                             "defaultValue": "0px"
                         },
@@ -550,9 +550,9 @@ frameLength = 30
             }, 1000 / frameLength);
         });
 } 
-createFrame({frame}, {id}, {Dtop}, {left}, {height}, {width}, {source}) {
+createFrame({frame, id, Dtop, Dleft, Dheight, Dwidth, source}) {
 
-create(frame, id, top, left, width, height, source);
+create(frame, id, Dtop, Dleft, Dwidth, Dheight, source);
 }
 setProperty({id}, {property}, {value}){
 setFrame(id, property, value);
