@@ -14,40 +14,25 @@ class StringManipulation {
           
             "blocks": [
                 {
-                    "opcode": "canvasStyle",
-                    "blockType": "command",
-                    "text": "set stage effect [effect] to [value]",
+                    "opcode": "occurrence",
+                    "blockType": "reporter",
+                    "text": "split index: [occurrence] deliminator: [value] string: [string]",
                     "arguments": {
-                        "effect": {
+                        "occurrence": {
                             "type": "string",
-                            "defaultValue": "blur",
-                            "menu": "effects",
+                            "defaultValue": "2",
                         },
                         "value": {
                             "type": "string",
-                            "defaultValue": "1",
+                            "defaultValue": "hi",
+                        },
+                        "string": {
+                            "type": "string",
+                            "defaultValue": "hi there. That plane is flying high",
                         },
                     },
                 },
-                {
-                    "opcode": "effect",
-                    "blockType": "reporter",
-                    "text": "effect [effect]",
-                    "arguments": {
-                        "effect": {
-                            "type": "string",
-                            "defaultValue": "blur",
-                          "menu": "effects"
-                        },
-                },
-                },
-                {
-                    "opcode": "clear",
-                    "blockType": "command",
-                    "text": "clear stage effects",
-                   
-
-                },
+                
 
 
             ],
@@ -56,29 +41,10 @@ class StringManipulation {
         };
     }
 
-    canvasStyle({effect, value}) {
-
-        setCanvas(effect, value)
-        
-    }
-
-    effect({effect}) {
-        return eval(effect)
-    }
-    clear(){
-blur = 0
-brightness = 1
-contrast = 1
-greyscale = 0
-hue = 0
-invert = 0
-saturate = 1
-sepia = 0
-updateCanvas()
-    }
-
+occurrence({occurrence, value, string}){
+return string.split(value)[parseInt(occurrence) - 1]
 }
-
+}
 (function() {
     var extensionInstance = new StringManipulation(window.vm.extensionManager.runtime)
     var serviceName = window.vm.extensionManager._registerInternalExtension(extensionInstance)
