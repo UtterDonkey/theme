@@ -554,7 +554,7 @@ createFrame({frame, id, Dtop, Dleft, Dheight, Dwidth, source}) {
 
 create(frame, id, Dtop, Dleft, Dwidth, Dheight, source);
 }
-setProperty({id}, {property}, {value}){
+setProperty({id, property, value}){
 setFrame(id, property, value);
 }
 }
