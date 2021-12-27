@@ -283,11 +283,11 @@ class Beta {
                         },
                         "Dheight": {
                             "type": "string",
-                            "defaultValue": "0"
+                            "defaultValue": "100%"
                         },
                         "Dwidth": {
                             "type": "string",
-                            "defaultValue": "0"
+                            "defaultValue": "100%"
                         },
                         "source": {
                             "type": "string",
