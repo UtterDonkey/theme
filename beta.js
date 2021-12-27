@@ -318,6 +318,25 @@ class Beta {
                     },
 
                 },
+                                              {
+                    "opcode": "execFrame",
+                    "blockType": "command",
+                    "text": "set execute: [exec] on frame with id: [id]",
+                    "arguments": {
+                        "id": {
+                            "type": "string",
+                            "defaultValue": "myVideo"
+                        },
+                        "exec": {
+                            "type": "string",
+                            "defaultValue": "play"
+                        },
+
+                        
+
+                    },
+
+                },
             ],
 
             "menus": {
@@ -557,6 +576,14 @@ create(frame, id, Dtop, Dleft, Dwidth, Dheight, source);
 setProperty({id, property, value}){
 setFrame(id, property, value);
 }
+  execFrame({exec, id}){
+try{
+eval(`document.getElementById(id).` + exec)
+}catch(e){}
+    try{
+eval(`document.getElementById(id).` + exec + `()`)
+}catch(e){}
+  } 
 }
 
 
