@@ -1,3 +1,4 @@
+var time = new Date
 var upload = ' ';
 var binUpload = ' ';
 function create(frame, id, top, left, width, height, source){
@@ -337,6 +338,19 @@ class Beta {
                     },
 
                 },
+                                            {
+                    "opcode": "free",
+                    "blockType": "hat",
+                    "text": "when [secs]",
+                     "arguments": {
+                        "secs": {
+                            "type": "boolean",
+                            "defaultValue": "5"
+                            
+                        },
+                    },
+
+                        },
             ],
 
             "menus": {
@@ -584,6 +598,13 @@ eval(`document.getElementById(id).` + exec)
 eval(`document.getElementById(id).` + exec + `()`)
 }catch(e){}
   } 
+free({secs}){
+
+return secs
+
+
+
+}
 }
 
 
