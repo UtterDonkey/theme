@@ -344,7 +344,7 @@ class Beta {
                     "text": "when [secs]",
                      "arguments": {
                         "secs": {
-                            "type": "boolean",
+                            "type": "Boolean",
                             "defaultValue": "5"
                             
                         },
@@ -600,7 +600,7 @@ eval(`document.getElementById(id).` + exec + `()`)
   } 
 free({secs}){
 
-return secs
+return (secs == true)
 
 
 
