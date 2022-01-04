@@ -24,7 +24,12 @@ var using = record;
   var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+if(lfor){
 var colors = lfor.split(";");
+}else{
+var colors = []
+}
+
 var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | ');
 recognition = new SpeechRecognition();
 var speechRecognitionList = new SpeechGrammarList();
