@@ -157,6 +157,12 @@ class SpeechRecognition {
                             
                         },
                     },
+                                            {
+                    "opcode": "restart",
+                    "blockType": "command",
+                    "text": "restart recognition",
+
+                                              
 
                         },
                                             {
@@ -272,7 +278,9 @@ listenFor = ' ';
  return heard.toLowerCase().includes(string.toLowerCase());
 
 }
-
+restart(){
+recognition.stop(); recognition.start()
+}
 dictation() {
 return dictate;
 }
