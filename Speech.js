@@ -157,6 +157,7 @@ class SpeechRecognition {
                             
                         },
                     },
+                                            },
                                             {
                     "opcode": "restart",
                     "blockType": "command",
