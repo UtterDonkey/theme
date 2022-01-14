@@ -52,8 +52,9 @@ if(blockY > 1500){
 x[i].style.display = 'none'
 
 }
+  try{
 document.getElementsByClassName('blocklyDraggable blocklySelected')[0].style.display = ''
-
+  }catch(e){}
 }
 }
 // restart
