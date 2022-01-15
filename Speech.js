@@ -1,106 +1,128 @@
 
+
 const SpeechIcon = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjRkZGRkZGIj48cGF0aCBkPSJNMTIgMTRjMS42NiAwIDIuOTktMS4zNCAyLjk5LTNMMTUgNWMwLTEuNjYtMS4zNC0zLTMtM1M5IDMuMzQgOSA1djZjMCAxLjY2IDEuMzQgMyAzIDN6bTUuMy0zYzAgMy0yLjU0IDUuMS01LjMgNS4xUzYuNyAxNCA2LjcgMTFINWMwIDMuNDEgMi43MiA2LjIzIDYgNi43MlYyMWgydi0zLjI4YzMuMjgtLjQ4IDYtMy4zIDYtNi43MmgtMS43eiIvPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4K";
 const SpeechMenu = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzc1NzU3NSI+CiAgICA8cGF0aCBkPSJNMTIgMTRjMS42NiAwIDIuOTktMS4zNCAyLjk5LTNMMTUgNWMwLTEuNjYtMS4zNC0zLTMtM1M5IDMuMzQgOSA1djZjMCAxLjY2IDEuMzQgMyAzIDN6bTUuMy0zYzAgMy0yLjU0IDUuMS01LjMgNS4xUzYuNyAxNCA2LjcgMTFINWMwIDMuNDEgMi43MiA2LjIzIDYgNi43MlYyMWgydi0zLjI4YzMuMjgtLjQ4IDYtMy4zIDYtNi43MmgtMS43eiIvPgogICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K";
 var record = false;
 var ready = false;
-var word = ' ';
 var listenFor = ' ';
-var SR = false;
 var voice = ' ';
 var recognition = ' ';
 var LH = ' ';
 var dictate = ' ';
+var LIVEdictate = ' ';
 var dictating = false;
 var hatHeard = ' ';
 var confidence;
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+var recognitionLoaded = true
+var noSpeechcontinues = 0
+var speechError = false
 
-function speech(lfor) {
-  if (!SR) {
-SR = true;
-return new Promise(function(resolve, reject) {
-   if ( record) {ready = true;}
-var using = record;
-  
-  var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
-var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
-if(lfor){
-var colors = lfor.split(";");
-}else{
-var colors = []
-}
-
-var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | ');
-recognition = new SpeechRecognition();
-var speechRecognitionList = new SpeechGrammarList();
-speechRecognitionList.addFromString(grammar, 1);
-recognition.grammars = speechRecognitionList;
+var recognition = new SpeechRecognition();
 recognition.continuous = false;
 recognition.lang = 'en-GB';
-recognition.interimResults = false;
-recognition.maxAlternatives = 1;
-recognition.start();
+recognition.interimResults = true;
+recognition.maxAlternatives = 5;
+
+
+
+  recognition.start();
+
+var color
+
 recognition.onresult = function(event) {
-    confidence = event.results[0][0].confidence;
-    var color = event.results[0][0].transcript;
-    if (using) {
+  if (record) {
+window.res = event
+  }
+   confidence = event.results[0][0].confidence;
+    color = event.results[0][0].transcript;
+    if (dictating) {
+        LIVEdictate = dictate + ' ' + color;
+    }
+    if (record) {
         voice = color;
+
+    }
+
+
+
+}
+
+
+recognition.onend = function() {
+
+
+    if (record) {
+if(noSpeechcontinues > 1 || !speechError){
+if(!speechError){
+        voice = color;
+}
         record = false;
         ready = false;
+}
     }
+
     listenFor = color;
     if (dictating) {
-        dictate = dictate + color;
+        dictate = dictate + ' ' + color;
     }
-    resolve(color);
-    SR = false;
-    speech(word);
-    word = ' ';
-};
+  recognition.stop();
+if(recognitionLoaded){
+try{
+
+  recognition.start();
+}catch(e){}
+}
+}
+
 recognition.onnomatch = function(event) {
-    resolve('[error]');
-    SR = false;
-    if (using) {
+
+    if (record) {
         voice = '[Not Recognised]';
         record = false;
         ready = false;
+
     }
-    speech(word);
-    word = ' ';
-    resolve(voice)
-};
+
+
+}
+
 recognition.onerror = function(event) {
-    resolve('[error]');
-    if (using) {
+
+    if (record) {
+
+if(event.error == 'no-speech'){
+
+if(noSpeechcontinues + 1 > 1){
+
         voice = '[error]' + event.error;
         record = false;
         ready = false
+noSpeechcontinues = 0
+}else{
+
+speechError = true
+noSpeechcontinues++
+record = true
+ready = true
+}
+}else{
+
+voice = '[error]' + event.error;
+}
     }
-    SR = false;;
-    speech(word);
-    word = ' ';
-    resolve(voice);
-};
-});
-} else {
-  return new Promise(function(resolve, reject) {
-  if(!listenFor == ' ') {
-LH = listenFor;
-  }
-resolve(LH);
-    });
 }
-}
+window.addEventListener('onunload', function(){recognitionLoaded = false; recognition.stop(); recognition.abort(); return undefined;})
 
-
-speech();
 window.onbeforeunload = function() {
 recognition.stop(); 
     return undefined;
 
 
 }
-class SpeechRecognition {
+class SpeechRecognitionC {
     constructor(runtime) {
         this.runtime = runtime
     }
@@ -121,31 +143,14 @@ class SpeechRecognition {
                   
 
                 },
-                              {
-                    "opcode": "hear",
-                    "blockType": "command",
-                    "text": "listen for [text]",
-                     "arguments": {
-                        "text": {
-                            "type": "string",
-                            "defaultValue": "hey alexa"
-                            
-                        },
-                    },
 
-                },
                 
                 {
                     "opcode": "getVoice",
                     "blockType": "reporter",
                     "text": "speech",
                 },
-                                            {
-                    "opcode": "recording",
-                    "blockType": "Boolean",
-                    "text": "recording?",
 
-                        },
                                             {
                     "opcode": "listen",
                     "blockType": "hat",
@@ -158,14 +163,7 @@ class SpeechRecognition {
                         },
                     },
                                             },
-                                            {
-                    "opcode": "restart",
-                    "blockType": "command",
-                    "text": "restart recognition",
 
-                                              
-
-                        },
                                             {
                     "opcode": "heardHat",
                     "blockType": "reporter",
@@ -193,13 +191,7 @@ class SpeechRecognition {
                   
 
                 },
-                                            {
-                    "opcode": "fix",
-                    "blockType": "command",
-                    "text": "fix issues",
-                  
 
-                },
             ],
 
             "menus": {
@@ -209,57 +201,26 @@ class SpeechRecognition {
     }
 
     record() {
-return new Promise(resolve => {
-setTimeout(() => {
-function checkFlag() {
-    if(ready) {
-       window.setTimeout(checkFlag, 100); /* this checks the flag every 100 milliseconds*/
-    } else {
-      resolve();
-    }
-}
-function checkBegin() {
-    if(!ready) {
-       window.setTimeout(checkBegin, 100); /* this checks the flag every 100 milliseconds*/
-    } else {
-      checkFlag()
-    }
-}
-checkBegin();
-
-record = true; recognition.stop();
-});
-        });
-
-
-        
-
-    }
-hear({text}) {
-
+noSpeechcontinues = 0
+speechError = false
 return new Promise(resolve => {
   setTimeout(() => {
 function checkFlag() {
     if(ready) {
        window.setTimeout(checkFlag, 100); /* this checks the flag every 100 milliseconds*/
     } else {
+
       resolve();
     }
 }
-function checkBegin() {
-    if(!ready) {
-       window.setTimeout(checkBegin, 100); /* this checks the flag every 100 milliseconds*/
-    } else {
-      checkFlag()
-    }
-}
-checkBegin();
 
-  word = text;
-record = true; recognition.stop();
+ record = true; ready = true; 
+
+checkFlag();
+
+
   });
         });
-
 }
 
 
@@ -267,10 +228,7 @@ record = true; recognition.stop();
         let speech = voice;
         return speech;
     }
-  recording() {
-   let recording = ready;
-    return recording;
-  }
+
 listen({string}) {
 let heard = listenFor;
 LH = listenFor;
@@ -279,11 +237,9 @@ listenFor = ' ';
  return heard.toLowerCase().includes(string.toLowerCase());
 
 }
-restart(){
-recognition.stop(); recognition.start()
-}
+
 dictation() {
-return dictate;
+return LIVEdictate;
 }
 startDictate() {
 dictate = ' ';
@@ -295,32 +251,15 @@ dictating = false;
   heardHat() {
    return hatHeard; 
   }
-fix() {
-record = false;
-ready = false;
-word = ' ';
-listenFor = ' ';
-SR = false;
-voice = ' ';
-recognition = ' ';
-LH = ' ';
-dictate = ' ';
-dictating = false;
-hatHeard = ' ';
-try{
-recognition.stop();
-  }catch(e){}
-try{
-recognition.abort();
-}catch(e){}
-speech();
-}
+
 }
 (function() {
-    var extensionInstance = new SpeechRecognition(window.vm.extensionManager.runtime)
+    var extensionInstance = new SpeechRecognitionC(window.vm.extensionManager.runtime)
     var serviceName = window.vm.extensionManager._registerInternalExtension(extensionInstance)
     window.vm.extensionManager._loadedExtensions.set(extensionInstance.getInfo().id, serviceName)
 })()
+
+
 var synth = window.speechSynthesis;
 var voices = [];
 
