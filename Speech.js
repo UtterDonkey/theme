@@ -33,6 +33,8 @@ recognition.maxAlternatives = 5;
 var color
 
 recognition.onresult = function(event) {
+  noSpeechcontinues = 0
+  speechError = false
   if (record) {
 window.res = event
   }
