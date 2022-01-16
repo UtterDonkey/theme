@@ -287,7 +287,7 @@ answerQuestion({question}) {
         var Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",'https://api.duckduckgo.com/?q=' + escape(question) + '&format=json&pretty=1&kp=1',false);
     Httpreq.send(null);
-    return JSON.parse(Httpreq.responseText).AbstractText
+    return JSON.parse(Httpreq.responseText).AbstractText == '' ? JSON.parse(Httpreq.responseText).RelatedTopics[0].Text : JSON.parse(Httpreq.responseText).AbstractText
 }
   parseJSON({PATH, JSON_STRING}) {
     try {
