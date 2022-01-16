@@ -284,8 +284,10 @@ class Utilities {
   }
 
 answerQuestion({question}) {
-    return fetch(URL).then(res => res.text().then(text => JSON.parse(text).AbstractText))
+    return new Promise(function(resolve, reject) {
+ fetch('https://api.duckduckgo.com/?q=' + escape(question) + '&format=json&pretty=1&kp=1').then(res => resolve(JSON.parse(res.text()).AbstractText))
       .catch(err => '');
+    })
 
 }
   parseJSON({PATH, JSON_STRING}) {
