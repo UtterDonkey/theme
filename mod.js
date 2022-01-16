@@ -284,7 +284,7 @@ class Utilities {
   }
 
 answerQuestion({question}) {
-    return fetch(URL).then(res => JSON.parse(res.text()).AbstractText)
+    return fetch(URL).then(res => res.text().then(text => JSON.parse(text).AbstractText))
       .catch(err => '');
 
 }
