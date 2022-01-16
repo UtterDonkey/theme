@@ -284,8 +284,9 @@ class Utilities {
   }
 
 answerQuestion({question}) {
+    return fetch(URL).then(res => JSON.parse(res.text()).AbstractText)
+      .catch(err => '');
 
-return fetch('https://api.duckduckgo.com/?q=' + escape('who is the french president?') + '&format=json&pretty=1&kp=1').then(function(result){result.text().then(function(text){(JSON.parse(text).AbstractText)})})
 }
   parseJSON({PATH, JSON_STRING}) {
     try {
