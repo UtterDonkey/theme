@@ -284,19 +284,10 @@ class Utilities {
   }
 
 answerQuestion({question}) {
-let answer
-   fetch('https://api.duckduckgo.com/?q=' + escape(question) + '&format=json&pretty=1&kp=1').then(res => answer = res.text())
-
-    return new Promise(function(resolve, reject) {
-function waitResult(){
-if(answer == undefined){
-setTimeout(waitResult, 100)
-
-}else{
-resolve(answer)
-}
-}
-    })
+        var Httpreq = new XMLHttpRequest(); // a new request
+    Httpreq.open("GET",'https://api.duckduckgo.com/?q=' + escape(question) + '&format=json&pretty=1&kp=1',false);
+    Httpreq.send(null);
+    return JSON.parse(Httpreq.responseText).AbstractText
 }
   parseJSON({PATH, JSON_STRING}) {
     try {
