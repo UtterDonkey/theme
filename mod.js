@@ -157,6 +157,19 @@ class Utilities {
           }
         },
         {
+          opcode: 'answerQuestion',
+
+          blockType: Scratch.BlockType.REPORTER,
+
+          text: 'answer question [question]',
+          arguments: {
+            question: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Who is the french president?'
+            }
+          }
+        },
+        {
           opcode: 'parseJSON',
 
           blockType: Scratch.BlockType.REPORTER,
@@ -270,6 +283,10 @@ class Utilities {
       .catch(err => '');
   }
 
+answerQuestion({question}) {
+
+return fetch('https://api.duckduckgo.com/?q=' + escape('who is the french president?') + '&format=json&pretty=1&kp=1').then(function(result){result.text().then(function(text){(JSON.parse(text).AbstractText)})})
+}
   parseJSON({PATH, JSON_STRING}) {
     try {
       const path = PATH.toString().split('/').map(prop => decodeURIComponent(prop));
