@@ -284,11 +284,19 @@ class Utilities {
   }
 
 answerQuestion({question}) {
-    return new Promise(function(resolve, reject) {
- fetch('https://api.duckduckgo.com/?q=' + escape(question) + '&format=json&pretty=1&kp=1').then(res => resolve(JSON.parse(res.text()).AbstractText))
-      .catch(err => '');
-    })
+let answer
+   fetch('https://api.duckduckgo.com/?q=' + escape(question) + '&format=json&pretty=1&kp=1').then(res => answer = res.text())
 
+    return new Promise(function(resolve, reject) {
+function waitResult(){
+if(answer == undefined){
+setTimeout(waitResult, 100)
+
+}else{
+resolve(answer)
+}
+}
+    })
 }
   parseJSON({PATH, JSON_STRING}) {
     try {
