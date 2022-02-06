@@ -1,6 +1,8 @@
 var time = new Date
 var upload = ' ';
 var binUpload = ' ';
+vm.addListener('PROJECT_RUN_START', function(){window.vm.running = true})
+vm.addListener('PROJECT_RUN_STOP', function(){window.vm.running = false})
 function create(frame, id, top, left, width, height, source){
 const wrapper = document.querySelector('div[class*="stage_stage-wrapper_eRRuk"]');
 const iframe = document.createElement(frame);
@@ -353,7 +355,7 @@ class Beta {
                         },
                                                           {
                     "opcode": "tick",
-                    "blockType": "hat",
+                    "blockType": "event",
                     "text": "on tick",
 
                         },
@@ -612,7 +614,11 @@ return (secs == true)
 
 }
 tick(){
-return Math.random() > 0.5
+  if(vm.running){
+return true
+  }else{
+   return false 
+  }
 }
 }
 
