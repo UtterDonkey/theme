@@ -577,18 +577,10 @@ setv({vars},{string}) {
 var vars = string;
 }
 frame() {
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-var frameLength
-if (urlParams.has('fps')) {
-frameLength = urlParams.get('fps')
-} else {
-frameLength = 30
-}
            return new Promise(resolve => {
             setTimeout(() => {
                 resolve();
-            }, 1000 / frameLength);
+            }, 1000 / vm.runtime.currentStepTime);
         });
 } 
 createFrame({frame, id, Dtop, Dleft, Dheight, Dwidth, source}) {
