@@ -351,6 +351,12 @@ class Beta {
                     },
 
                         },
+                                                          {
+                    "opcode": "tick",
+                    "blockType": "hat",
+                    "text": "on tick",
+
+                        },
             ],
 
             "menus": {
@@ -604,6 +610,9 @@ return (secs == true)
 
 
 
+}
+tick(){
+return Math.random() > 0.5
 }
 }
 
