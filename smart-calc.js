@@ -156,12 +156,14 @@ return result;
 }
 }
 doMath({math, x}){
+const forceAbs = ['cos']
 x = parseFloat(x);
 let operation = `${math}&${x}`
 if(smartCache.indexOf(operation) > -1){
 return smartCache[smartCache.indexOf(operation) + 1];
 }else{
 let result = eval(`Math.${math}(${x})`);
+if(forceAbs.indexOf(math) > -1) result = Math.abs(result);
 smartCache.push(operation);
 smartCache.push(result);
 return result;
