@@ -69,13 +69,27 @@ class smartCalc {
 
                     },
                 },
-                
+                                    {
+                    "opcode": "doMath",
+                    "blockType": "reporter",
+                    "text": "[math] of [x]",
+                    "arguments": {
+                        "math": {
+                            "type": "string",
+                            "menu": "maths"
+                        },
+                        "x": {
+                            "type": "number",
+                        },
+
+                    },
+                },
             ],
 
             "menus": {
-                "effects": {
-                    acceptReporters: true, 
-                    items: [{text:"blur",value:"blur"}, {text:"brightness",value:"brightness"}, {text:"contrast",value:"contrast"}, {text:"greyscale",value:"greyscale"}, {text:"hue",value:"hue"}, {text:"invert",value:"invert"}, {text:"saturate",value:"saturate"}, {text:"sepia",value:"sepia"}],
+                "maths": {
+                    acceptReporters: false, 
+                    items: [{text:"abs",value:"abs"}, {text:"floor",value:"floor"}, {text:"ceiling",value:"ceil"}, {text:"sqrt",value:"sqrt"}, {text:"sin",value:"sin"}, {text:"cos",value:"cos"}, {text:"tan",value:"tan"}, {text:"asin",value:"asin"}, {text:"acos",value:"acos"}, {text:"atan",value:"atan"}],
                 }
             }     
         };
@@ -141,7 +155,18 @@ smartCache.push(result);
 return result;
 }
 }
-
+doMath({math, x}){
+x = parseFloat(x);
+let operation = `${math}&${x}`
+if(smartCache.indexOf(operation) > -1){
+return smartCache[smartCache.indexOf(operation) + 1];
+}else{
+let result = eval(`Math.${math}(${x})`);
+smartCache.push(operation);
+smartCache.push(result);
+return result;
+}    
+}
 }
 
 (function() {
