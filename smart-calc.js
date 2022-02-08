@@ -90,6 +90,8 @@ class smartCalc {
    add({p1, p2}){
 let d1 = p1 > p2 ? p2 : p1;
 let d2 = p1 < p2 ? p2 : p1;
+d1 = parseFloat(d1);
+d2 = parseFloat(d2);
 let operation = `${d1}+${d2}`
 if(smartCache.indexOf(operation) > -1){
 return smartCache[smartCache.indexOf(operation) + 1];
@@ -103,6 +105,8 @@ return result;
 subtract({p1, p2}){
 let d1 = p1;
 let d2 = p2;
+d1 = parseFloat(d1);
+d2 = parseFloat(d2);
 let operation = `${d1}-${d2}`
 if(smartCache.indexOf(operation) > -1){
 return smartCache[smartCache.indexOf(operation) + 1];
@@ -116,6 +120,8 @@ return result;
 multiply({p1, p2}){
 let d1 = p1 > p2 ? p2 : p1;
 let d2 = p1 < p2 ? p2 : p1;
+d1 = parseFloat(d1);
+d2 = parseFloat(d2);
 let operation = `${d1}*${d2}`
 if(smartCache.indexOf(operation) > -1){
 return smartCache[smartCache.indexOf(operation) + 1];
@@ -129,6 +135,8 @@ return result;
 divide({p1, p2}){
 let d1 = p1;
 let d2 = p2;
+d1 = parseFloat(d1);
+d2 = parseFloat(d2);
 let operation = `${d1}/${d2}`
 if(smartCache.indexOf(operation) > -1){
 return smartCache[smartCache.indexOf(operation) + 1];
