@@ -8,7 +8,9 @@ class smartCalc {
         return {
             "id": "smartCalc",
             "name": "xOperators",
-         
+            "color1": "#59c059",
+            "color2": "#389438",
+            "color3": "#59c059",
           
             "blocks": [
                 {
