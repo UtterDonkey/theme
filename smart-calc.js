@@ -27,7 +27,7 @@ class smartCalc {
 
                     },
                 },
-                
+                {
                     "opcode": "subtract",
                     "blockType": "reporter",
                     "text": "[p1]-[p2]",
@@ -43,7 +43,7 @@ class smartCalc {
 
                     },
                 },
-                
+                    {
                     "opcode": "multiply",
                     "blockType": "reporter",
                     "text": "[p1]*[p2]",
@@ -59,6 +59,7 @@ class smartCalc {
 
                     },
                 },
+                    {
                     "opcode": "divide",
                     "blockType": "reporter",
                     "text": "[p1]/[p2]",
@@ -86,7 +87,58 @@ class smartCalc {
         };
     }
 
-   
+   add({p1, p2}){
+let d1 = p1 > p2 ? p2 : p1;
+let d2 = p1 < p2 ? p2 : p1;
+let operation = `${d1}+${d2}`
+if(smartCache.indexOf(operation) > -1){
+return smartCache[smartCache.indexOf(operation) + 1];
+}else{
+let result = d1+d2;
+smartCache.push(operation);
+smartCache.push(result);
+return result;
+}
+}
+subtract({p1, p2}){
+let d1 = p1;
+let d2 = p2;
+let operation = `${d1}-${d2}`
+if(smartCache.indexOf(operation) > -1){
+return smartCache[smartCache.indexOf(operation) + 1];
+}else{
+let result = d1-d2;
+smartCache.push(operation);
+smartCache.push(result);
+return result;
+}
+}
+multiply({p1, p2}){
+let d1 = p1 > p2 ? p2 : p1;
+let d2 = p1 < p2 ? p2 : p1;
+let operation = `${d1}*${d2}`
+if(smartCache.indexOf(operation) > -1){
+return smartCache[smartCache.indexOf(operation) + 1];
+}else{
+let result = d1*d2;
+smartCache.push(operation);
+smartCache.push(result);
+return result;
+}
+}
+divide({p1, p2}){
+let d1 = p1;
+let d2 = p2;
+let operation = `${d1}/${d2}`
+if(smartCache.indexOf(operation) > -1){
+return smartCache[smartCache.indexOf(operation) + 1];
+}else{
+let result = d1/d2;
+smartCache.push(operation);
+smartCache.push(result);
+return result;
+}
+}
 
 }
 
