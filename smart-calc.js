@@ -20,11 +20,9 @@ class smartCalc {
                     "arguments": {
                         "p1": {
                             "type": "number",
-                            "defaultValue": "",
                         },
                         "p2": {
                             "type": "number",
-                            "defaultValue": "",
                         },
 
                     },
@@ -36,11 +34,9 @@ class smartCalc {
                     "arguments": {
                         "p1": {
                             "type": "number",
-                            "defaultValue": "",
                         },
                         "p2": {
                             "type": "number",
-                            "defaultValue": "",
                         },
 
                     },
@@ -52,11 +48,9 @@ class smartCalc {
                     "arguments": {
                         "p1": {
                             "type": "number",
-                            "defaultValue": "",
                         },
                         "p2": {
                             "type": "number",
-                            "defaultValue": "",
                         },
 
                     },
@@ -68,11 +62,9 @@ class smartCalc {
                     "arguments": {
                         "p1": {
                             "type": "number",
-                            "defaultValue": "",
                         },
                         "p2": {
                             "type": "number",
-                            "defaultValue": "",
                         },
 
                     },
