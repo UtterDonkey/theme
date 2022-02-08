@@ -10,7 +10,7 @@ class smartCalc {
             "name": "xOperators",
             "color1": "#59c059",
             "color2": "#389438",
-            "color3": "#59c059",
+            "color3": "#389438",
           
             "blocks": [
                 {
