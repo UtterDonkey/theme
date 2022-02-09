@@ -1,4 +1,19 @@
 var smartCache = []
+function calculate(operator, n){
+        switch (operator) {
+        case 'abs': return Math.abs(n);
+        case 'floor': return Math.floor(n);
+        case 'ceiling': return Math.ceil(n);
+        case 'sqrt': return Math.sqrt(n);
+        case 'sin': return parseFloat(Math.sin((Math.PI * n) / 180).toFixed(10));
+        case 'cos': return parseFloat(Math.cos((Math.PI * n) / 180).toFixed(10));
+        case 'tan': return MathUtil.tan(n);
+        case 'asin': return (Math.asin(n) * 180) / Math.PI;
+        case 'acos': return (Math.acos(n) * 180) / Math.PI;
+        case 'atan': return (Math.atan(n) * 180) / Math.PI;
+        }
+        return 0;
+}
 class smartCalc {
     constructor(runtime) {
         this.runtime = runtime
@@ -16,7 +31,7 @@ class smartCalc {
                 {
                     "opcode": "add",
                     "blockType": "reporter",
-                    "text": "[p1]+[p2]",
+                    "text": "𝑥[p1]+[p2]",
                     "arguments": {
                         "p1": {
                             "type": "number",
@@ -30,7 +45,7 @@ class smartCalc {
                 {
                     "opcode": "subtract",
                     "blockType": "reporter",
-                    "text": "[p1]-[p2]",
+                    "text": "𝑥[p1]-[p2]",
                     "arguments": {
                         "p1": {
                             "type": "number",
@@ -44,7 +59,7 @@ class smartCalc {
                     {
                     "opcode": "multiply",
                     "blockType": "reporter",
-                    "text": "[p1]*[p2]",
+                    "text": "𝑥[p1]*[p2]",
                     "arguments": {
                         "p1": {
                             "type": "number",
@@ -58,7 +73,7 @@ class smartCalc {
                     {
                     "opcode": "divide",
                     "blockType": "reporter",
-                    "text": "[p1]/[p2]",
+                    "text": "𝑥[p1]/[p2]",
                     "arguments": {
                         "p1": {
                             "type": "number",
@@ -72,7 +87,7 @@ class smartCalc {
                                     {
                     "opcode": "doMath",
                     "blockType": "reporter",
-                    "text": "[math] of [x]",
+                    "text": "𝑥[math] of [x]",
                     "arguments": {
                         "math": {
                             "type": "string",
@@ -89,7 +104,7 @@ class smartCalc {
             "menus": {
                 "maths": {
                     acceptReporters: false, 
-                    items: [{text:"abs",value:"abs"}, {text:"floor",value:"floor"}, {text:"ceiling",value:"ceil"}, {text:"sqrt",value:"sqrt"}, {text:"sin",value:"sin"}, {text:"cos",value:"cos"}, {text:"tan",value:"tan"}, {text:"asin",value:"asin"}, {text:"acos",value:"acos"}, {text:"atan",value:"atan"}],
+                    items: [{text:"abs",value:"abs"}, {text:"floor",value:"floor"}, {text:"ceiling",value:"ceiling"}, {text:"sqrt",value:"sqrt"}, {text:"sin",value:"sin"}, {text:"cos",value:"cos"}, {text:"tan",value:"tan"}, {text:"asin",value:"asin"}, {text:"acos",value:"acos"}, {text:"atan",value:"atan"}],
                 }
             }     
         };
@@ -156,14 +171,12 @@ return result;
 }
 }
 doMath({math, x}){
-const forceAbs = ['cos']
 x = parseFloat(x);
 let operation = `${math}&${x}`
 if(smartCache.indexOf(operation) > -1){
 return smartCache[smartCache.indexOf(operation) + 1];
 }else{
-let result = eval(`Math.${math}(${x})`);
-if(forceAbs.indexOf(math) > -1) result = Math.abs(result);
+let result = calculate(math, x)
 smartCache.push(operation);
 smartCache.push(result);
 return result;
