@@ -297,7 +297,7 @@ class Utilities {
   }
 typeOfWord({string}) {
   return new Promise(resolve => {
-fetch('https://api.dictionaryapi.dev/api/v2/entries/en/climb').then(function(e){e.text().then(function(e){test = e; resolve(JSON.parse(test)[0].meanings[JSON.parse(test)[0].meanings.length - 1].partOfSpeech) })})
+fetch('https://api.dictionaryapi.dev/api/v2/entries/en/climb').then(function(e){e.text().then(function(e){window.test = e; resolve(JSON.parse(test)[0].meanings[JSON.parse(test)[0].meanings.length - 1].partOfSpeech) })})
   })
 }
   
