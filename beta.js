@@ -1,4 +1,5 @@
 var time = new Date
+var dictionary = {}
 var upload = ' ';
 var binUpload = ' ';
 vm.addListener('PROJECT_RUN_START', function(){window.vm.running = true})
@@ -359,6 +360,19 @@ class Beta {
                     "text": "on tick",
 
                         },
+              {
+          opcode: 'typeOfWord',
+
+          blockType: 'reporter',
+
+          text: 'type of word of [string]',
+          arguments: {
+            string: {
+              type: 'string',
+              defaultValue: 'climb'
+            }
+          }
+        },
             ],
 
             "menus": {
@@ -620,6 +634,13 @@ return true
    return false 
   }
 }
+  
+  typeOfWord({string}) {
+  return new Promise(resolve => {
+fetch('https://api.dictionaryapi.dev/api/v2/entries/en/climb').then(function(e){e.text().then(function(e){dictionary.test = e; resolve(JSON.parse(dictionary.test)[0].meanings[JSON.parse(dictionary.test)[0].meanings.length - 1].partOfSpeech) })})
+  })
+}
+                     
 }
 
 
