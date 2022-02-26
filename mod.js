@@ -157,7 +157,7 @@ class Utilities {
           }
         },
                 {
-          opcode: 'typeOfWord,
+          opcode: 'typeOfWord',
 
           blockType: Scratch.BlockType.REPORTER,
 
