@@ -638,6 +638,7 @@ return true
   typeOfWord({string}) {
     dictionary.word = string;
   return new Promise(resolve => {
+    setTimeout(function(){resolve('none')}, 2500)
 fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + dictionary.word).then(function(e){e.text().then(function(e){dictionary.test = e; resolve(JSON.parse(dictionary.test)[0].meanings[JSON.parse(dictionary.test)[0].meanings.length - 1].partOfSpeech) })})
   })
 }
