@@ -636,8 +636,9 @@ return true
 }
   
   typeOfWord({string}) {
+    dictionary.word = string;
   return new Promise(resolve => {
-fetch('https://api.dictionaryapi.dev/api/v2/entries/en/climb').then(function(e){e.text().then(function(e){dictionary.test = e; resolve(JSON.parse(dictionary.test)[0].meanings[JSON.parse(dictionary.test)[0].meanings.length - 1].partOfSpeech) })})
+fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + dictionary.word).then(function(e){e.text().then(function(e){dictionary.test = e; resolve(JSON.parse(dictionary.test)[0].meanings[JSON.parse(dictionary.test)[0].meanings.length - 1].partOfSpeech) })})
   })
 }
                      
