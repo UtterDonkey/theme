@@ -156,6 +156,19 @@ class Utilities {
             }
           }
         },
+                {
+          opcode: 'typeOfWord,
+
+          blockType: Scratch.BlockType.REPORTER,
+
+          text: 'type of word of [string]',
+          arguments: {
+            string: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'climb'
+            }
+          }
+        },
         {
           opcode: 'answerQuestion',
 
@@ -282,7 +295,12 @@ class Utilities {
     return fetch(URL).then(res => res.text())
       .catch(err => '');
   }
-
+typeOfWord({string}) {
+  return new Promise(resolve => {
+fetch('https://api.dictionaryapi.dev/api/v2/entries/en/climb').then(function(e){e.text().then(function(e){test = e; resolve(JSON.parse(test)[0].meanings[JSON.parse(test)[0].meanings.length - 1].partOfSpeech) })})
+  })
+}
+  
 answerQuestion({question}) {
         var Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",'https://api.duckduckgo.com/?q=' + escape(question) + '&format=json&pretty=1&kp=1',false);
