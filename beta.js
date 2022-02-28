@@ -21,6 +21,26 @@ wrapper.append(iframe);
 function setFrame(id, property, value) {
 eval(`document.getElementById("` + id + `").` + property + ` = ` + value);
 }
+
+function encrypt(string, key){
+string = string.split('')
+key = (key.repeat((string.length / key.length) + 1)).split('')
+result = []
+for (let i = 0; i < string.length; i++) {
+result.push(String.fromCharCode((string[i].charCodeAt() + key[i].charCodeAt())))
+}
+return result.join('')
+}
+function decrypt(string, key){
+string = string.split('')
+key = (key.repeat((string.length / key.length) + 1)).split('')
+result = []
+for (let i = 0; i < string.length; i++) {
+result.push(String.fromCharCode((string[i].charCodeAt() - key[i].charCodeAt())))
+}
+return result.join('')
+}
+
 class Beta {
     constructor(runtime) {
         this.runtime = runtime
@@ -373,6 +393,40 @@ class Beta {
             }
           }
         },
+                            {
+          opcode: 'en',
+
+          blockType: 'reporter',
+
+          text: 'encrypt [string] with key [key]',
+          arguments: {
+            string: {
+              type: 'string',
+              defaultValue: 'apple'
+            },
+            key: {
+              type: 'string',
+              defaultValue: 'banana'
+            }
+          }
+        },
+                                          {
+          opcode: 'de',
+
+          blockType: 'reporter',
+
+          text: 'decrypt [string] with key [key]',
+          arguments: {
+            string: {
+              type: 'string',
+              defaultValue: '-C3-D1-DE-CD-D3'
+            },
+            key: {
+              type: 'string',
+              defaultValue: 'banana'
+            }
+          }
+        },
             ],
 
             "menus": {
@@ -644,7 +698,14 @@ fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + dictionary.word).then
 }catch(e){}
     })
 }
-                     
+en({string, key}){
+return escape(encrypt(string, key)).replaceAll('%', '-') 
+  
+}
+  
+de({string, key}){
+ return decrypt(unescape(string.replaceAll('-', '%')), key) 
+}
 }
 
 
