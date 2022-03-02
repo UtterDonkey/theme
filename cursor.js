@@ -2,7 +2,7 @@ const CursorIcon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAMAAA
 if(document.getElementById('wrapper')){
  const stage = document.getElementById('wrapper')   
 }else{
-   document.getElementsByClassName('stage_stage_1fD7k box_box_2jjDp')[0] 
+   const stage = document.getElementsByClassName('stage_stage_1fD7k box_box_2jjDp')[0] 
 }
 class MouseCursor {
     constructor(runtime) {
