@@ -402,7 +402,7 @@ class Database {
 
           blockType: Scratch.BlockType.REPORTER,
 
-          text: 'get [NAME] from database [DATABASE],
+          text: 'get [NAME] from database [DATABASE]',
           arguments: {
             NAME: {
               type: Scratch.ArgumentType.STRING,
