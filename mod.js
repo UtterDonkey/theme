@@ -386,4 +386,83 @@ class LocalStorage {
 }
 
 Scratch.extensions.register(new LocalStorage())
+class Database {
+  constructor () {}
 
+  getInfo () {
+    return {
+      id: 'databse',
+      name: 'Database',
+      menuIconURI: StorageIcon,
+      blockIconURI: StorageIcon,
+
+      blocks: [
+        {
+          opcode: 'readDatabase',
+
+          blockType: Scratch.BlockType.REPORTER,
+
+          text: 'get [NAME] from database [DATABASE],
+          arguments: {
+            NAME: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'highscore'
+            },
+             DATABASE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'game data'
+            }
+          }
+        },
+        {
+          opcode: 'setDatabase',
+
+          blockType: Scratch.BlockType.COMMAND,
+
+          text: 'set [NAME] to [VALUE] in database [DATABASE]',
+          arguments: {
+            NAME: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'highscore'
+            },
+            VALUE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: '12'
+            },
+             DATABASE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'game data'
+            }
+          }
+        }
+      ]
+    }
+  }
+
+  readDatabase ({ NAME, DATABASE }) {
+    data = localforage.getItem(DATABASE)
+      .then(value => value || '')
+     if(data == null){
+      data = {}
+      data[NAME] = ''
+    }else{
+    data = JSON.parse(data)
+    }
+    return data[NAME]
+  }
+
+  setDatabase ({ NAME, VALUE, DATABASE }) {
+    let data = localforage.getItem(DATABASE)
+      .then(value => value)
+    if(data == null){
+      data = {}
+    }else{
+    data = JSON.parse(data)
+    }
+    data[NAME] = VALUE
+    localforage.setItem(DATABASE, JSON.stringify(data))
+    return ''
+  }
+}
+
+Scratch.extensions.register(new Database())
