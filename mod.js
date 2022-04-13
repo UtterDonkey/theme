@@ -386,6 +386,20 @@ class LocalStorage {
 }
 
 Scratch.extensions.register(new LocalStorage())
+function en(c){var x='charCodeAt',b,e={},f=c.split(""),d=[],a=f[0],g=256;for(b=1;b<f.length;b++)c=f[b],null!=e[a+c]?a+=c:(d.push(1<a.length?e[a]:a[x](0)),e[a+c]=g,g++,a=c);d.push(1<a.length?e[a]:a[x](0));for(b=0;b<d.length;b++)d[b]=String.fromCharCode(d[b]);return d.join("")}
+
+function de(b){var a,e={},d=b.split(""),c=f=d[0],g=[c],h=o=256;for(b=1;b<d.length;b++)a=d[b].charCodeAt(0),a=h>a?d[b]:e[a]?e[a]:f+c,g.push(a),c=a.charAt(0),e[o]=f+c,o++,f=a;return g.join("")}
+
+localStorage.setItem('database', '{}');
+function setLocalDatabase(item, value){
+  data = JSON.parse(de(localStorage.getItem('database')));
+  data[item] = value;
+  localStorage.setItem('database', en(JSON.stringify(data)));
+};
+function readLocalDatabase(item){
+  data = JSON.parse(de(localStorage.getItem('database')));
+  return data[item];
+};
 class Database {
   constructor () {}
 
@@ -434,34 +448,62 @@ class Database {
               defaultValue: 'game data'
             }
           }
+        },
+        {
+          opcode: 'sizeDatabase',
+
+          blockType: Scratch.BlockType.COMMAND,
+
+          text: 'size of database [DATABASE] (bytes)',
+          arguments: {
+             DATABASE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'game data'
+            }
+          }
+        },
+        {
+          opcode: 'sizeDatabaseKB',
+
+          blockType: Scratch.BlockType.COMMAND,
+
+          text: 'size of database [DATABASE] (kilobytes)',
+          arguments: {
+             DATABASE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'game data'
+            }
+          }
         }
       ]
     }
   }
 
   readDatabase ({ NAME, DATABASE }) {
-    data = localforage.getItem(DATABASE)
-      .then(value => value || '')
-     if(data == null){
-      data = {}
-      data[NAME] = ''
-    }else{
-    data = JSON.parse(data)
+    let data = readLocalDatabase(DATABASE)
+    if(data){
+      return JSON.parse(data)[NAME]
     }
-    return data[NAME]
+    return ''
   }
 
   setDatabase ({ NAME, VALUE, DATABASE }) {
-    let data = localforage.getItem(DATABASE)
-      .then(value => value)
-    if(data == null){
-      data = {}
-    }else{
-    data = JSON.parse(data)
+    let data = readLocalDatabase(DATABASE)
+    
+    if(!data){
+    data = '{}'
     }
-    data[NAME] = VALUE
-    localforage.setItem(DATABASE, JSON.stringify(data))
-    return ''
+      data =  JSON.parse(data)
+      data[NAME] = VALUE
+      setLocalDatabase(DATABASE, JSON.stringify(data))
+
+  }
+  
+  sizeDatabase({DATABASE}){
+return readLocalDatabase(DATABASE).length
+  }
+  sizeDatabaseKB({DATABASE}){
+  return Math.round((readLocalDatabase(DATABASE).length/1024)*100)/100
   }
 }
 
