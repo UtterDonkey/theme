@@ -405,7 +405,7 @@ class Database {
 
   getInfo () {
     return {
-      id: 'databse',
+      id: 'database',
       name: 'Database',
       menuIconURI: StorageIcon,
       blockIconURI: StorageIcon,
@@ -454,7 +454,7 @@ class Database {
 
           blockType: Scratch.BlockType.COMMAND,
 
-          text: 'size of database [DATABASE] (bytes)',
+          text: 'size of database [DATABASE] in bytes',
           arguments: {
              DATABASE: {
               type: Scratch.ArgumentType.STRING,
@@ -467,7 +467,7 @@ class Database {
 
           blockType: Scratch.BlockType.COMMAND,
 
-          text: 'size of database [DATABASE] (kilobytes)',
+          text: 'size of database [DATABASE] in kilobytes',
           arguments: {
              DATABASE: {
               type: Scratch.ArgumentType.STRING,
@@ -483,8 +483,9 @@ class Database {
     let data = readLocalDatabase(DATABASE)
     if(data){
       return JSON.parse(data)[NAME]
-    }
+    }else{
     return ''
+    }
   }
 
   setDatabase ({ NAME, VALUE, DATABASE }) {
