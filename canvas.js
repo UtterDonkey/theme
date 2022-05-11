@@ -46,6 +46,22 @@ class CanvasTheme {
                         },
                     },
                 },
+                  {
+                    "opcode": "changeCanvasStyle",
+                    "blockType": "command",
+                    "text": "change stage effect [effect] by [value]",
+                    "arguments": {
+                        "effect": {
+                            "type": "string",
+                            "defaultValue": "hue",
+                            "menu": "effects",
+                        },
+                        "value": {
+                            "type": "string",
+                            "defaultValue": "25",
+                        },
+                    },
+                },
                 {
                     "opcode": "effect",
                     "blockType": "reporter",
@@ -58,6 +74,7 @@ class CanvasTheme {
                         },
                 },
                 },
+                
                 {
                     "opcode": "clear",
                     "blockType": "command",
@@ -83,7 +100,11 @@ class CanvasTheme {
         setCanvas(effect, value)
         
     }
-
+    changeCanvasStyle({effect, value}) {
+        
+        setCanvas(effect, parseFloat(eval(effect))+parseFloat(value))
+        
+    }
     effect({effect}) {
         return eval(effect)
     }
