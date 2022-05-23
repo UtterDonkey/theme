@@ -154,7 +154,7 @@ getAccuracy() {
   }
   
   metresToCoordinates({metres}){
-    return convertMetersToCoordinates(metres);
+    return convertMetresToCoordinates(metres);
   };
   
   coordinateDistance({longitude1, latitude1, longitude2, latitude2}){
