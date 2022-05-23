@@ -11,7 +11,8 @@ function update(){
 };
 
 function distanceBetween(lo1, la1, lo2, la2){
-  return Math.sqrt(Math.pow(lo1, lo2) + Math.pow(la1, la2));
+
+  return Math.sqrt((lo1-lo2)*(lo1-lo2) + (la1-la2)*(la1-la2));
 };
 function convertCoordinatesToMetres(coordinates){
   return coordinates*111000;
