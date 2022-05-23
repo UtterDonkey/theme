@@ -9,11 +9,7 @@ let disAC = 0;
 function update(){
   navigator.geolocation.getCurrentPosition(function(e){window.lo = e.coords.longitude; window.la = e.coords.latitude; window.ac = e.coords.accuracy;});
 };
-function save(){
-  update();
-  localStorage.setItem('pin', window.lo + ':' + window.la);
-  alert('location pinned');
-};
+
 function distanceBetween(lo1, la1, lo2, la2){
   return Math.sqrt(Math.pow(lo1, lo2) + Math.pow(la1, la2));
 };
@@ -73,31 +69,68 @@ class GeoLocation {
           
             "blocks": [
                 {
-                    "opcode": "SwitchCur",
-                    "blockType": "command",
-                    "text": "switch cursor to [cur]",
+                    "opcode": "getLongitude",
+                    "blockType": "reporter",
+                    "text": "Current Longitude",
+                },
+                {
+                    "opcode": "getLatitude",
+                    "blockType": "reporter",
+                    "text": "Current Latitude",
+                },
+                {
+                    "opcode": "getAccuracy",
+                    "blockType": "reporter",
+                    "text": "Current Accuracy",
+                },
+                {
+                    "opcode": "coordinatesToMetres",
+                    "blockType": "reporter",
+                    "text": "Coordinates: [coordinates] in Metres",
                     "arguments": {
-                        "cur": {
-                            "type": "string",
-                            "defaultValue": "pointer",
-                            "menu": "cursors"
+                        "coordinates": {
+                            "type": "number",
+                            "defaultValue": "51.5"
                         },
                     },
                 },
                 {
-                    "opcode": "hide",
-                    "blockType": "command",
-                    "text": "hide cursor",
-                },
-                {
-                    "opcode": "reset",
-                    "blockType": "command",
-                    "text": "reset cursor",
-                },
-                {
-                    "opcode": "GetCur",
+                    "opcode": "metresToCoordinates",
                     "blockType": "reporter",
-                    "text": "cursor",
+                    "text": "Metres: [metres] in Coordinates",
+                    "arguments": {
+                        "metres": {
+                            "type": "number",
+                            "defaultValue": "5717277"
+                        },
+                    },
+                },
+                {
+                    "opcode": "coordinateDistance",
+                    "blockType": "reporter",
+                    "text": "Distance From Longitude: [longitude1] Latitude: [latitude1] to Longitude: [longitude2] Latitude: [latitude2]",
+                    "arguments": {
+                        "longitude1": {
+                            "type": "number",
+                            "defaultValue": "51.5"
+                        },
+
+                        "latitude1": {
+                            "type": "number",
+                            "defaultValue": "0"
+                        },
+
+
+                        "longitude2": {
+                            "type": "number",
+                            "defaultValue": "56"
+                        },
+
+                        "latitude2": {
+                            "type": "number",
+                            "defaultValue": "3.1"
+                        },
+                    },
                 },
             ],
     
