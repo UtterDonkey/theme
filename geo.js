@@ -158,7 +158,7 @@ getAccuracy() {
   };
   
   coordinateDistance({longitude1, latitude1, longitude2, latitude2}){
-    return distanceBetween(longitude1, latitude1, longitude2, latitude2)
+    return distanceBetween(parseFloat(longitude1), parseFloat(latitude1), parseFloat(longitude2), parseFloat(latitude2))
   }
 }
 
