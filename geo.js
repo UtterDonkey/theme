@@ -13,11 +13,11 @@ function update(){
 function distanceBetween(lo1, la1, lo2, la2){
   return Math.sqrt(Math.pow(lo1, lo2) + Math.pow(la1, la2));
 };
-function coordinatesToMetres(coordinates){
+function convertCoordinatesToMetres(coordinates){
   return coordinates*111000;
 };
 
-function MetresToCoordinates(metres){
+function convertMetresToCoordinates(metres){
   return metres/111000;
 };
 
@@ -137,22 +137,29 @@ class GeoLocation {
         };
     }
 
-    SwitchCur({cur}) {
-        stage.style.cursor = cur;
-    }
+getLongitude() {
+  return window.lo;
+}
 
-    hide() {
-        stage.style.cursor = "none";
+getLatitude() {
+  return window.la;
     }
     
-    reset() {
-        stage.style.cursor = "auto";
-    }
-
-    GetCur() {
-        let cur = stage.style.cursor;
-        return cur;
-    }
+getAccuracy() {
+  return disAC;
+}
+  
+  coordinatesToMetres({coordinates}){
+    return convertCoordinatesToMetres(coordinates);
+  }
+  
+  metresToCoordinates({metres}){
+    return convertMetersToCoordinates(metres);
+  };
+  
+  coordinateDistance({longitude1, latitude1, longitude2, latitude2}){
+    return distanceBetween(longitude1, latitude1, longitude2, latitude2)
+  }
 }
 
 (function() {
