@@ -3,7 +3,7 @@ function en(c){var x='charCodeAt',b,e={},f=c.split(""),d=[],a=f[0],g=256;for(b=1
 
 function de(b){var a,e={},d=b.split(""),c=f=d[0],g=[c],h=o=256;for(b=1;b<d.length;b++)a=d[b].charCodeAt(0),a=h>a?d[b]:e[a]?e[a]:f+c,g.push(a),c=a.charAt(0),e[o]=f+c,o++,f=a;return g.join("")}
 
-localStorage.setItem('database', '{}');
+if(localStorage.getItem('database') == null) localStorage.setItem('database', '{}');
 function setLocalDatabase(item, value){
   data = JSON.parse(de(localStorage.getItem('database')));
   data[item] = value;
