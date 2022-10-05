@@ -23,6 +23,7 @@ function setLocalDatabase(item, value){
 if(localStorage.getItem('database') == null){ localStorage.setItem('database', '{}')}else{
   localStorage.getItem('database') = fixJSON(localStorage.getItem('database'))
 }
+      return ''}
 };
 function readLocalDatabase(item){
   try{
