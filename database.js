@@ -16,9 +16,9 @@ function fixJSON(json){
 if(localStorage.getItem('database') == null) localStorage.setItem('database', '{}');
 function setLocalDatabase(item, value){
   try{
-      data = JSON.parse(de(localStorage.getItem('database')));
+      data = JSON.parse(localStorage.getItem('database'));
       data[item] = value;
-      localStorage.setItem('database', en(JSON.stringify(data)));
+      localStorage.setItem('database', JSON.stringify(data));
     }catch(e){
 if(localStorage.getItem('database') == null){ localStorage.setItem('database', '{}')}else{
   localStorage.getItem('database') = fixJSON(localStorage.getItem('database'))
@@ -27,7 +27,7 @@ if(localStorage.getItem('database') == null){ localStorage.setItem('database', '
 };
 function readLocalDatabase(item){
   try{
-    data = JSON.parse(de(localStorage.getItem('database')));
+    data = JSON.parse(localStorage.getItem('database'));
     return data[item];
   }catch(e){
 if(localStorage.getItem('database') == null){ localStorage.setItem('database', '{}')}else{
