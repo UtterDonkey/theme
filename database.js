@@ -33,7 +33,7 @@ function readLocalDatabase(item, preventFreeze){
 if(localStorage.getItem('database') == null){ localStorage.setItem('database', '{}')}else{
   localStorage.getItem('database') = fixJSON(localStorage.getItem('database'))
   if(!preventFreeze) return readLocalDatabase(item, true)
-
+}
 }
 return '{}'
 };
