@@ -30,10 +30,12 @@ function readLocalDatabase(item, preventFreeze){
     data = JSON.parse(localStorage.getItem('database'));
     return data[item];
   }catch(e){
-if(localStorage.getItem('database') == null){ localStorage.setItem('database', '{}')}else{
-  localStorage.getItem('database') = fixJSON(localStorage.getItem('database'))
-  if(!preventFreeze) return readLocalDatabase(item, true)
-}
+if(localStorage.getItem('database') == null){
+  localStorage.setItem('database', '{}')
+}else{
+  localStorage.getItem('database') = fixJSON(localStorage.getItem('database'));
+  if(preventFreeze !== true) return readLocalDatabase(item, true);
+};
 }
 return '{}'
 };
