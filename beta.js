@@ -704,7 +704,9 @@ return escape(encrypt(string, key)).replaceAll('%', '-')
 }
   
 de({string, key}){
- return decrypt(unescape(string.replaceAll('-', '%')), key) 
+  try{
+    return decrypt(unescape(string.replaceAll('-', '%')), key) 
+  }catch(e){return ''}
 }
 }
 
