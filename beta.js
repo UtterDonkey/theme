@@ -2,8 +2,6 @@ var time = new Date
 var dictionary = {}
 var upload = ' ';
 var binUpload = ' ';
-vm.addListener('PROJECT_RUN_START', function(){window.vm.running = true})
-vm.addListener('PROJECT_RUN_STOP', function(){window.vm.running = false})
 function create(frame, id, top, left, width, height, source){
 const wrapper = document.querySelector('div[class*="stage_stage-wrapper_eRRuk"]');
 const iframe = document.createElement(frame);
@@ -40,7 +38,13 @@ result.push(String.fromCharCode((string[i].charCodeAt() - key[i].charCodeAt())))
 }
 return result.join('')
 }
-
+let projectRunning = false;
+vm.on('PROJECT_RUN_START', () =>{
+    projectRunning = true;
+})
+vm.on('PROJECT_RUN_STOP', () =>{
+    projectRunning = false;
+})
 class Beta {
     constructor(runtime) {
         this.runtime = runtime
@@ -682,7 +686,7 @@ return (secs == true)
 
 }
 tick(){
-  if(vm.running){
+  if(projectRunning){
 return true
   }else{
    return false 
