@@ -381,7 +381,7 @@ class Beta {
                         },
                                                           {
                     "opcode": "tick",
-                    "blockType": "hat",
+                    "blockType": "event",
                     "text": "on tick",
 
                         },
