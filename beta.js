@@ -687,6 +687,7 @@ return (secs == true)
 }
 tick(){
   if(projectRunning && vm.runtime.threads.length > 1){
+    console.log(vm.runtime.threads)
 return true
   }else{
    return false 
