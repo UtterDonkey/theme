@@ -39,7 +39,7 @@ result.push(String.fromCharCode((string[i].charCodeAt() - key[i].charCodeAt())))
 return result.join('')
 }
 let projectRunning = false;
-let preojectTimeout = -1;
+let projectTimeout = -1;
 vm.on('PROJECT_RUN_START', () =>{
     if(projectTimeout == -1) projectRunning = true;
 })
