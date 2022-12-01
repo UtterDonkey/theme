@@ -39,11 +39,13 @@ result.push(String.fromCharCode((string[i].charCodeAt() - key[i].charCodeAt())))
 return result.join('')
 }
 let projectRunning = false;
+let preojectTimeout = -1;
 vm.on('PROJECT_RUN_START', () =>{
-    projectRunning = true;
+    if(projectTimeout == -1) projectRunning = true;
 })
 vm.on('PROJECT_RUN_STOP', () =>{
     projectRunning = false;
+  projectTimeout = setTimeout(() =>{projectTimeout = -1}, 100)
 })
 class Beta {
     constructor(runtime) {
