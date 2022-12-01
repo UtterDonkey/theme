@@ -39,13 +39,11 @@ result.push(String.fromCharCode((string[i].charCodeAt() - key[i].charCodeAt())))
 return result.join('')
 }
 let projectRunning = false;
-let projectTimeout = -1;
 vm.on('PROJECT_RUN_START', () =>{
-    if(projectTimeout == -1) projectRunning = true;
+    projectRunning = true;
 })
 vm.on('PROJECT_RUN_STOP', () =>{
     projectRunning = false;
-  projectTimeout = setTimeout(() =>{projectTimeout = -1}, 100)
 })
 class Beta {
     constructor(runtime) {
@@ -688,7 +686,7 @@ return (secs == true)
 
 }
 tick(){
-  if(projectRunning){
+  if(projectRunning && vm.runtime.threads.length > 1){
 return true
   }else{
    return false 
