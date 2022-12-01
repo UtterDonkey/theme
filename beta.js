@@ -39,6 +39,7 @@ result.push(String.fromCharCode((string[i].charCodeAt() - key[i].charCodeAt())))
 return result.join('')
 }
 let projectRunning = false;
+let projectSwitch = true;
 vm.on('PROJECT_RUN_START', () =>{
     projectRunning = true;
 })
@@ -380,7 +381,7 @@ class Beta {
                         },
                                                           {
                     "opcode": "tick",
-                    "blockType": "event",
+                    "blockType": "hat",
                     "text": "on tick",
 
                         },
@@ -687,8 +688,8 @@ return (secs == true)
 }
 tick(){
   if(projectRunning && vm.runtime.threads.length > 1){
-    console.log(vm.runtime.threads)
-return true
+    projectSwitch = !projectSwitch
+return projectSwitch
   }else{
    return false 
   }
