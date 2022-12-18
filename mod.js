@@ -168,15 +168,15 @@ class Utilities {
           arguments: {
             INDEX: {
               type: Scratch.ArgumentType.NUMBER,
-              defaultValue: 'p'
+              defaultValue: 2
             },
             LETTER: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'apple'
+              defaultValue: 'n'
             },
             STRING: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: '2'
+              defaultValue: 'banana'
             }
           }
         },
