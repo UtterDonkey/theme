@@ -143,7 +143,7 @@ class Utilities {
 
           blockType: Scratch.BlockType.REPORTER,
 
-          text: 'first [LETTER] in [STRING] after [INDEX]',
+          text: 'first [LETTER] in [STRING] after letter [INDEX]',
           arguments: {
             LETTER: {
               type: Scratch.ArgumentType.STRING,
