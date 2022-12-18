@@ -322,13 +322,11 @@ class Utilities {
   }
 
   occurrenceIndex({INDEX, LETTER, STRING}) {
-    let occurrences = 0;
     let currentPosition = 0;
     if(INDEX < 1 || !STRING.includes(LETTER) || !INDEX) return '';
-    for(let i=0; occurrences>INDEX-1; i++){
-      currentPosition = STRING.indexOf(LETTER, currentPosition)
+    for(let i=0; i<INDEX; i++){
+      currentPosition = STRING.indexOf(LETTER, currentPosition+1)
       if(currentPosition < 0) return '';
-      occurrences++
     }
     return currentPosition+1
   }
