@@ -138,6 +138,48 @@ class Utilities {
             }
           }
         },
+         {
+          opcode: 'occurrenceAfterIndex',
+
+          blockType: Scratch.BlockType.REPORTER,
+
+          text: 'first [LETTER] in [STRING] after [INDEX]',
+          arguments: {
+            LETTER: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'p'
+            },
+            STRING: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'apple'
+            },
+            INDEX: {
+              type: Scratch.ArgumentType.NUMBER,
+              defaultValue: '2'
+            }
+          }
+        },
+        {
+          opcode: 'occurrenceIndex',
+
+          blockType: Scratch.BlockType.REPORTER,
+
+          text: 'occurrence [INDEX] of [LETTER] in [STRING]',
+          arguments: {
+            INDEX: {
+              type: Scratch.ArgumentType.NUMBER,
+              defaultValue: 'p'
+            },
+            LETTER: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'apple'
+            },
+            STRING: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: '2'
+            }
+          }
+        },
         {
           opcode: 'currentMillisecond',
           blockType: Scratch.BlockType.REPORTER,
@@ -273,6 +315,22 @@ class Utilities {
 
   letters({STRING, START, END}) {
     return STRING.slice(Math.max(1, START) - 1, Math.min(STRING.length, END));
+  }
+  
+  occurrenceAfterIndex({LETTER, STRING, INDEX}) {
+    return STRING.indexOf(LETTER, INDEX)+1
+  }
+
+  occurrenceIndex({INDEX, LETTER, STRING}) {
+    let occurrences = 0;
+    let currentPosition = 0;
+    if(INDEX < 1 || !STRING.includes(LETTER) || !INDEX) return '';
+    for(let i=0; occurrences>INDEX-1; i++){
+      currentPosition = STRING.indexOf(LETTER, currentPosition)
+      if(currentPosition < 0) return '';
+      occurrences++
+    }
+    return currentPosition+1
   }
 
   currentMillisecond() {
